@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    internal class Socio
+    public class Socio
     {
         public int IdSocio { get; set; }
         public string DNI { get; set; }
@@ -16,7 +16,7 @@ namespace Dominio
         public string Barrio { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
-        public bool Estado { get; set; }  
+        public bool Estado { get; set; }
         public DateTime FechaRegistro { get; set; }
     }
 }
