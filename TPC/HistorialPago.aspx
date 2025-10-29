@@ -34,6 +34,7 @@
                     <asp:BoundField DataField="IdPago" HeaderText="#" />
                     <asp:BoundField DataField="FechaPago" HeaderText="Fecha de Pago" DataFormatString="{0:dd MMM yyyy}" />
                     <asp:BoundField DataField="Monto" HeaderText="Monto" DataFormatString="{0:C}" />
+                    <asp:BoundField DataField="Metodo" HeaderText="Método" />
                 </Columns>
             </asp:GridView>
 
