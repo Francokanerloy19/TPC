@@ -8,17 +8,17 @@ using System.Web.UI.WebControls;
 
 namespace TPC
 {
-    public partial class Inicio : System.Web.UI.Page
+    public partial class ListadoSocio : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                CargarSociosPorVencer();
+                CargarSocios();
             }
         }
 
-        private void CargarSociosPorVencer()
+        private void CargarSocios()
         {
             // Crear tabla en memoria
             DataTable dt = new DataTable();
@@ -34,21 +34,28 @@ namespace TPC
             dt.Rows.Add(3, "Carlos", "Pérez", "carlos@mail.com", new DateTime(2025, 11, 5));
 
             // Cargar datos en el GridView
-            gvSociosPorVencer.DataSource = dt;
-            gvSociosPorVencer.DataBind();
+            gvSocios.DataSource = dt;
+            gvSocios.DataBind();
         }
 
-    
-     protected void gvSociosPorVencer_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "Contactar")
-            {
-                string correo = e.CommandArgument.ToString();
-                // Acá podés implementar el envío de mail, por ejemplo:
-                // EnviarCorreo(correo);
-            }
+        protected void btnVer_Click(object sender, EventArgs e)
+        { // codigo de peubra aca va la logica para recuperar el id del socio y guardarlo en sesion
+
+            // Obtener el botón que disparó el evento
+            Button btn = (Button)sender;
+
+            // Obtener la fila donde se hizo clic
+            GridViewRow fila = (GridViewRow)btn.NamingContainer;
+
+            // Obtener el valor de la columna IdSocio (primer columna en tu caso)
+            int idSocio = Convert.ToInt32(gvSocios.DataKeys[fila.RowIndex].Value);
+
+            // Guardar el ID en sesión
+            Session["IdSocioSeleccionado"] = idSocio;
+
+            // Redirigir a la página de historial
+            Response.Redirect("HistorialPago.aspx", false);
         }
+
     }
-
-
 }

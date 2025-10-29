@@ -116,7 +116,9 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="HistorialPago.aspx" />
     <Content Include="Inicio.aspx" />
+    <Content Include="ListadoSocio.aspx" />
     <Content Include="NuevoSocio.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -192,12 +194,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HistorialPago.aspx.cs">
+      <DependentUpon>HistorialPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HistorialPago.aspx.designer.cs">
+      <DependentUpon>HistorialPago.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoSocio.aspx.cs">
+      <DependentUpon>ListadoSocio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoSocio.aspx.designer.cs">
+      <DependentUpon>ListadoSocio.aspx</DependentUpon>
     </Compile>
     <Compile Include="NuevoSocio.aspx.cs">
       <DependentUpon>NuevoSocio.aspx</DependentUpon>

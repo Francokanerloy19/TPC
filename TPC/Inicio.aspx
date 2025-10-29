@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="TPC.Inicio" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<!DOCTYPE html>
+    <!DOCTYPE html>
     <html lang="es">
     <head>
         <meta charset="UTF-8">
@@ -31,7 +32,6 @@
                 background-color: #238636;
                 border: none;
             }
-   
         </style>
     </head>
     <body>
@@ -42,22 +42,22 @@
             <h5 class="mb-3">Acciones Requeridas</h5>
 
             <div class="row mb-4">
-    <div class="col-md-6">
-        <div class="card bg-dark priority-high p-3">
-            <h6 class="text-danger"><i class="bi bi-exclamation-circle"></i> Alta Prioridad</h6>
-            <p class="text-secondary">Membresías inactivas.</p>
-            <asp:Button Text="Resolver Ahora" class="btn btn-custom btn-sm" runat="server" />
-        </div>
-    </div>
+                <div class="col-md-6">
+                    <div class="card bg-dark priority-high p-3">
+                        <h6 class="text-danger"><i class="bi bi-exclamation-circle"></i>Alta Prioridad</h6>
+                        <p class="text-secondary">Membresías inactivas.</p>
+                        <asp:Button Text="Resolver Ahora" class="btn btn-custom btn-sm" runat="server" />
+                    </div>
+                </div>
 
-    <div class="col-md-6">
-        <div class="card bg-dark priority-medium p-3">
-            <h6 class="text-warning"><i class="bi bi-hourglass-split"></i> Prioridad Media</h6>
-            <p class="text-secondary">Membresías por Vencer.</p>
-            <asp:Button Text="Ver Todos" class="btn btn-secondary btn-sm" runat="server" />
-        </div>
-    </div>
-</div>
+                <div class="col-md-6">
+                    <div class="card bg-dark priority-medium p-3">
+                        <h6 class="text-warning"><i class="bi bi-hourglass-split"></i>Prioridad Media</h6>
+                        <p class="text-secondary">Membresías por Vencer.</p>
+                        <asp:Button Text="Ver Todos" class="btn btn-secondary btn-sm" runat="server" />
+                    </div>
+                </div>
+            </div>
 
             <!-- Resumen del Gimnasio -->
             <h5>Resumen del Gimnasio</h5>
@@ -99,32 +99,20 @@
             <!-- Membresías por Vencer -->
             <h5>Membresías por Vencer</h5>
             <!-- Apareceran los socios con 3 dias antes del vencimiento a los cuales se los contactaran por correo -->
-            <div class="card bg-dark mb-2 p-3 d-flex justify-content-between align-items-center">
-                <div>
-
-                    <small class="text-secondary">Vence: 28 Oct 2023</small>
-                </div>
-
-                <asp:Button Text="Contactar" class="btn btn-custom btn-sm" runat="server" />
-            </div>
-
-            <div class="card bg-dark mb-2 p-3 d-flex justify-content-between align-items-center">
-                <div>
-
-                    <small class="text-secondary">Vence: 29 Oct 2023</small>
-                </div>
-                <asp:Button Text="Contactar" class="btn btn-custom btn-sm" runat="server" />
-
-            </div>
-
-            <div class="card bg-dark mb-5 p-3 d-flex justify-content-between align-items-center">
-                <div>
-
-                    <small class="text-secondary">Vence: 30 Nov 2023</small>
-                </div>
-                <asp:Button Text="Contactar" class="btn btn-custom btn-sm" runat="server" />
-
-            </div>
+            <asp:GridView ID="gvSociosPorVencer" runat="server" AutoGenerateColumns="False" CssClass="table table-dark table-striped table-hover text-center" BorderStyle="None">
+                <Columns>
+                    <asp:BoundField DataField="IdSocio" HeaderText="#" />
+                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
+                    <asp:BoundField DataField="Correo" HeaderText="Correo" />
+                    <asp:BoundField DataField="FechaVencimiento" HeaderText="Vencimiento" DataFormatString="{0:dd MMM yyyy}" />
+                    <asp:TemplateField HeaderText="Acción">
+                        <ItemTemplate>
+                            <asp:Button ID="btnContactar" runat="server" Text="Contactar" CssClass="btn btn-custom btn-sm" CommandName="Contactar" CommandArgument='<%# Eval("Correo") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+            </asp:GridView>
         </div>
 
 
