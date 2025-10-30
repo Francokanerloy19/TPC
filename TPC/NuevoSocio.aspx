@@ -36,6 +36,8 @@
             border-radius: 12px;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
         }
+
+        
     </style>
     <script>   
         function validar() {
@@ -214,7 +216,8 @@
             <br />
             <div class="col-12">
 
-                <asp:Button Text="Agregar" ID="btnAgregar" runat="server" class="btn btn-primary" OnClientClick="return validar()" />
+                <asp:Button Text="Agregar" ID="btnAgregar" runat="server" CssClass="btn btn-success" OnClientClick="return validar()" />
+                <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger" OnClick="btnCancelar_Click" CausesValidation="false"/>
             </div>
         </div>
     </div>

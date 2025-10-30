@@ -55,7 +55,9 @@ CREATE TABLE Pago (
 INSERT INTO Socios (DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono)
 VALUES 
 ('12345678', 'Juan', 'Pérez', 'juan.perez@email.com', 'Palermo', 'Av. Santa Fe 1234', '1123456789'),
-('87654321', 'María', 'González', 'maria.gonzalez@email.com', 'Recoleta', 'Callao 567', '1198765432');
+('87654321', 'María', 'González', 'maria.gonzalez@email.com', 'Recoleta', 'Callao 567', '1198765432')
+('11111111', 'Franco', 'Kaner Loy', 'frk@email.com', 'Villa crespo', 'calle falsa', '1123456789'),
+('22222222', 'Camila', 'Kaner Loy', 'clk@email.com', 'Villa crespo', 'calle falsa', '1198765432');
 GO
 
 INSERT INTO TipoMembresia (NombreTipo, DuracionDias, Precio, Beneficios)
@@ -66,15 +68,21 @@ VALUES
 INSERT INTO Membresia (IdSocio, IdTipoMembresia)
 VALUES
 (1, 1), 
-(2, 2);
+(2, 2),
+(3, 1), 
+(4, 2);
 INSERT INTO Pago (IdSocio, IdMembresia, Monto, MetodoPago)
 VALUES
 (1, 1, 15000, 'Tarjeta'),
-(2, 2, 25000, 'Transferencia');
-
+(2, 2, 25000, 'Transferencia'),
+(3, 1, 15000, 'Tarjeta'),
+(4, 2, 25000, 'Transferencia');
 
 -- Ver todos los socios
-SELECT * FROM Socios;
+SELECT s.IdSocio,s.DNI, s.Nombre, s.Apellido, s.Correo, s.Barrio, s.Direccion, s.Telefono FROM Socios s ;
+
+
+SELECT s.IdSocio,s.DNI, s.Nombre, s.Apellido, s.Correo, s.Barrio, s.Direccion, s.Telefono, m.FechaVencimiento FROM Socios s inner join Membresia m ON s.IdSocio = m.IdSocio;
 
 -- Ver todas las membresías
 SELECT m.IdMembresia, s.Nombre, s.Apellido, t.NombreTipo, m.FechaPago, m.FechaVencimiento, m.Estado

@@ -5,8 +5,7 @@
 
     <h2>Listado de socios</h2>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+   
     <style>
         body {
             background-color: #0d1117;
@@ -19,8 +18,9 @@
         }
     </style>
 
-
-
+    <br />
+    <asp:Button ID="btnAgregar" runat="server" Text="Agregar nuevo socio" CssClass="btn btn-custom btn-sm" OnClick="btnAgregar_Click" />
+    <br />
     <div class="container py-3">
 
 

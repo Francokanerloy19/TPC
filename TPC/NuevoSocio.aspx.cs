@@ -13,5 +13,10 @@ namespace TPC
         {
 
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListadoSocio.aspx", false);
+        }
     }
 }

@@ -65,5 +65,10 @@ namespace TPC
             Session["IdSocioSeleccionado"] = idSocio;
             Response.Redirect("Pagos.aspx", false);
         }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("NuevoSocio.aspx", false);
+        }
     }
 }
