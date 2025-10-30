@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccesoDatos;
+using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -20,21 +22,12 @@ namespace TPC
 
         private void CargarSocios()
         {
-            // Crear tabla en memoria
-            DataTable dt = new DataTable();
-            dt.Columns.Add("IdSocio", typeof(int));
-            dt.Columns.Add("Nombre", typeof(string));
-            dt.Columns.Add("Apellido", typeof(string));
-            dt.Columns.Add("Correo", typeof(string));
-            dt.Columns.Add("FechaVencimiento", typeof(DateTime));
+            
+            gvSocios.DataBind();
+            SocioNegocio negocio = new SocioNegocio();
+            List<Socio> listaSocios = negocio.Listar();
 
-            // Agregar filas de prueba (hardcodeadas)
-            dt.Rows.Add(1, "Franco", "Kaner", "franco@mail.com", new DateTime(2025, 10, 31));
-            dt.Rows.Add(2, "Lucía", "Infante", "lucia@mail.com", new DateTime(2025, 11, 2));
-            dt.Rows.Add(3, "Carlos", "Pérez", "carlos@mail.com", new DateTime(2025, 11, 5));
-
-            // Cargar datos en el GridView
-            gvSocios.DataSource = dt;
+            gvSocios.DataSource = listaSocios;
             gvSocios.DataBind();
         }
 

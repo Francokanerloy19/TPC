@@ -18,5 +18,11 @@ namespace Dominio
         public string Telefono { get; set; }
         public bool Estado { get; set; }
         public DateTime FechaRegistro { get; set; }
+        public Membresia Membresia { get; set; }
+
+        public DateTime FechaVencimiento
+        {
+            get { return Membresia?.FechaVencimiento ?? DateTime.MinValue; }
+        }
     }
 }

@@ -33,7 +33,7 @@ CREATE TABLE Membresia (
     FechaPago DATE NOT NULL DEFAULT GETDATE(),
     FechaVencimiento AS DATEADD(DAY, 30, FechaPago) PERSISTED, -- se calcula automáticamente
     Estado VARCHAR(15) NOT NULL DEFAULT 'Activa',
-    FOREIGN KEY (IdSocio) REFERENCES Socio(IdSocio),
+    FOREIGN KEY (IdSocio) REFERENCES Socios(IdSocio),
     FOREIGN KEY (IdTipoMembresia) REFERENCES TipoMembresia(IdTipoMembresia)
 );
 
@@ -44,7 +44,7 @@ CREATE TABLE Pago (
     FechaPago DATE NOT NULL DEFAULT GETDATE(),
     Monto DECIMAL(10,2) NOT NULL,
     MetodoPago VARCHAR(30),
-    FOREIGN KEY (IdSocio) REFERENCES Socio(IdSocio),
+    FOREIGN KEY (IdSocio) REFERENCES Socios(IdSocio),
     FOREIGN KEY (IdMembresia) REFERENCES Membresia(IdMembresia)
 );
 
@@ -58,4 +58,33 @@ VALUES
 ('87654321', 'María', 'González', 'maria.gonzalez@email.com', 'Recoleta', 'Callao 567', '1198765432');
 GO
 
-select * from Socios
+INSERT INTO TipoMembresia (NombreTipo, DuracionDias, Precio, Beneficios)
+VALUES
+('Básica', 30, 15000, 'Acceso a gimnasio'),
+('Premium', 30, 25000, 'Gimnasio + yoga');
+
+INSERT INTO Membresia (IdSocio, IdTipoMembresia)
+VALUES
+(1, 1), 
+(2, 2);
+INSERT INTO Pago (IdSocio, IdMembresia, Monto, MetodoPago)
+VALUES
+(1, 1, 15000, 'Tarjeta'),
+(2, 2, 25000, 'Transferencia');
+
+
+-- Ver todos los socios
+SELECT * FROM Socios;
+
+-- Ver todas las membresías
+SELECT m.IdMembresia, s.Nombre, s.Apellido, t.NombreTipo, m.FechaPago, m.FechaVencimiento, m.Estado
+FROM Membresia m
+INNER JOIN Socios s ON m.IdSocio = s.IdSocio
+INNER JOIN TipoMembresia t ON m.IdTipoMembresia = t.IdTipoMembresia;
+
+-- Ver pagos
+SELECT p.IdPago, s.Nombre, s.Apellido, t.NombreTipo, p.Monto, p.MetodoPago, p.FechaPago
+FROM Pago p
+INNER JOIN Socios s ON p.IdSocio = s.IdSocio
+INNER JOIN Membresia m ON p.IdMembresia = m.IdMembresia
+INNER JOIN TipoMembresia t ON m.IdTipoMembresia = t.IdTipoMembresia;

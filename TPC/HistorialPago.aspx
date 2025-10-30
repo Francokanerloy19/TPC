@@ -1,15 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="HistorialPago.aspx.cs" Inherits="TPC.HistorialPago" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
         <h2>Historial de pagos</h2>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+        
         <style>
             body {
                 background-color: #0d1117;
@@ -21,8 +17,7 @@
                 border: none;
             }
         </style>
-    </head>
-    <body>
+    
 
         <div class="container py-3">
 
@@ -43,7 +38,7 @@
 
 
 
-    </body>
-    </html>
+   
+    
 
 </asp:Content>

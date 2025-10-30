@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public class Pago
+    public class Membresia
     {
-        public int IdPago { get; set; }
-        public int IdSocio { get; set; }
         public int IdMembresia { get; set; }
+        public int IdSocio { get; set; }
+        public int IdTipoMembresia { get; set; }
         public DateTime FechaPago { get; set; }
-        public string MetodoPago { get; set; }
-        public decimal Monto { get; set; }
+        public DateTime FechaVencimiento { get; set; }
+        public string Estado { get; set; }
 
-       
     }
 }
