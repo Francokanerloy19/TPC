@@ -20,7 +20,16 @@
             height: 100%;
             margin: 0;
         }
-
+        body{
+            background-color: #0d1117;
+            color: #e6edf3;
+        }
+        .card {
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
         body {
             display: flex;
             flex-direction: column;

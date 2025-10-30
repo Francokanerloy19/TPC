@@ -23,6 +23,7 @@ namespace AccesoDatos
           //Falta agregar tu coneccion
 
             conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Gimnasio; integrated security=true");
+            
             comando = new SqlCommand();
         }
 

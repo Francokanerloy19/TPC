@@ -57,5 +57,20 @@ namespace TPC
             Response.Redirect("HistorialPago.aspx", false);
         }
 
+        protected void btnPagar_Click(object sender, EventArgs e)
+        {
+            // Obtener el botón que disparó el evento
+            Button btn = (Button)sender;
+
+            // Obtener la fila donde se hizo clic
+            GridViewRow fila = (GridViewRow)btn.NamingContainer;
+
+            // Obtener el valor de la columna IdSocio (primer columna en tu caso)
+            int idSocio = Convert.ToInt32(gvSocios.DataKeys[fila.RowIndex].Value);
+
+            // Guardar el ID en sesión
+            Session["IdSocioSeleccionado"] = idSocio;
+            Response.Redirect("Pagos.aspx", false);
+        }
     }
 }
