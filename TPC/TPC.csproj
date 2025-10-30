@@ -119,6 +119,7 @@
     <Content Include="HistorialPago.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="ListadoSocio.aspx" />
+    <Content Include="Membresia.aspx" />
     <Content Include="NuevoSocio.aspx" />
     <Content Include="Pagos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -215,6 +216,13 @@
     </Compile>
     <Compile Include="ListadoSocio.aspx.designer.cs">
       <DependentUpon>ListadoSocio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membresia.aspx.cs">
+      <DependentUpon>Membresia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membresia.aspx.designer.cs">
+      <DependentUpon>Membresia.aspx</DependentUpon>
     </Compile>
     <Compile Include="NuevoSocio.aspx.cs">
       <DependentUpon>NuevoSocio.aspx</DependentUpon>
