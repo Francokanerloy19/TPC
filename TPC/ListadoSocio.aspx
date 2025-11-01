@@ -5,7 +5,7 @@
 
     <h2>Listado de socios</h2>
 
-   
+
     <style>
         body {
             background-color: #0d1117;
@@ -46,6 +46,11 @@
                 <asp:TemplateField HeaderText="Pagar">
                     <ItemTemplate>
                         <asp:Button ID="btnPagar" runat="server" Text="Pagar" CssClass="btn btn-custom btn-sm" OnClick="btnPagar_Click" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Gestion">
+                    <ItemTemplate>
+                        <asp:Button ID="btnGestion" runat="server" Text="Gestionar" CssClass="btn btn-custom btn-sm" OnClick="btnGestion_Click" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

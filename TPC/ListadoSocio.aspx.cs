@@ -71,7 +71,7 @@ namespace TPC
             Response.Redirect("NuevoSocio.aspx", false);
         }
 
-        protected void btnGestion_Click()
+        protected void btnGestion_Click(object sender, EventArgs e)
         {
 
         }
