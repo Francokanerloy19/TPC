@@ -20,5 +20,10 @@ namespace TPC
         {
             Response.Redirect("ModificarSocio.aspx", false);
         }
+
+        protected void btnVerDatosPersonales_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("DatosPersonales.aspx", false);
+        }
     }
 }

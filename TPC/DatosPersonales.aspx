@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DatosPersonales.aspx.cs" Inherits="TPC.DatosPersonales" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container mt-4">
-    <div class="card shadow-lg border-primary">
-        <div class="card-header bg-primary text-white text-center">
+   <div class="container mt-4">
+    <div class="card shadow-lg border-light bg-dark text-white">
+        <div class="card-header bg-secondary text-white text-center">
             <h3>Datos personales</h3>
         </div>
 
-        <div class="card-body bg-light">
+        <div class="card-body">
             <div class="row mb-3">
                 <div class="col">
                     <label class="fw-bold">DNI:</label>
@@ -50,11 +50,12 @@
             </div>
         </div>
 
-        <div class="card-footer text-center bg-white">
-            <asp:Button Text="Volver" ID="btnVolver" runat="server" CssClass="btn btn-secondary mx-2" />
+        <div class="card-footer text-center bg-dark border-light">
+            <asp:Button Text="Volver" ID="btnVolver" runat="server" CssClass="btn btn-light" OnClick="btnVolver_Click" />
         </div>
     </div>
 </div>
+
 
 </asp:Content>
    

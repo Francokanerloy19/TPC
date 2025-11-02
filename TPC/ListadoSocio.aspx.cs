@@ -73,7 +73,7 @@ namespace TPC
 
         protected void btnGestion_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Gestion.aspx", false);
         }
     }
 }
