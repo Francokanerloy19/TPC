@@ -113,6 +113,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="DatosPersonales.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Gestion.aspx" />
@@ -121,6 +122,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="ListadoSocio.aspx" />
     <Content Include="Membresia.aspx" />
+    <Content Include="ModificarSocio.aspx" />
     <Content Include="NuevoSocio.aspx" />
     <Content Include="Pagos.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -187,6 +189,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="DatosPersonales.aspx.cs">
+      <DependentUpon>DatosPersonales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DatosPersonales.aspx.designer.cs">
+      <DependentUpon>DatosPersonales.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -231,6 +240,13 @@
     </Compile>
     <Compile Include="Membresia.aspx.designer.cs">
       <DependentUpon>Membresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarSocio.aspx.cs">
+      <DependentUpon>ModificarSocio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarSocio.aspx.designer.cs">
+      <DependentUpon>ModificarSocio.aspx</DependentUpon>
     </Compile>
     <Compile Include="NuevoSocio.aspx.cs">
       <DependentUpon>NuevoSocio.aspx</DependentUpon>

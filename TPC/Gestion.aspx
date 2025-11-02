@@ -16,9 +16,9 @@
                     <p class="text-center mb-4">Seleccioná una acción para administrar al socio.</p>
 
                     <div class="d-flex justify-content-center gap-3">
-                        <asp:Button ID="btnVerHistorial" runat="server" Text="Datos personales" CssClass="btn btn-outline-light btn-lg" />
-                        <asp:Button ID="btnPagar" runat="server" Text="modificar" CssClass="btn btn-outline-warning btn-lg" />
-                        <asp:Button ID="btnGestion" runat="server" Text="Dar de baja" CssClass="btn btn-outline-danger btn-lg" />
+                        <asp:Button ID="btnVerDatosPersonales" runat="server" Text="Datos personales" CssClass="btn btn-outline-light btn-lg" />
+                        <asp:Button ID="btnModificar" runat="server" Text="modificar" CssClass="btn btn-outline-warning btn-lg"  OnClick="btnModificar_Click"/>
+                        <asp:Button ID="btnDarDeBaja" runat="server" Text="Dar de baja" CssClass="btn btn-outline-danger btn-lg" />
                     </div>
                 </div>
                 <div class="card-footer text-center text-muted small">
