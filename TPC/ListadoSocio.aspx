@@ -34,20 +34,7 @@
                 <asp:BoundField DataField="IdSocio" HeaderText="#" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
-                <asp:BoundField DataField="Correo" HeaderText="Correo" />
-                <asp:BoundField DataField="FechaVencimiento" HeaderText="Vencimiento" DataFormatString="{0:dd MMM yyyy}" />
 
-                <asp:TemplateField HeaderText="Historial de pagos">
-                    <ItemTemplate>
-                        <asp:Button ID="btnVer" runat="server" Text="Ver" CssClass="btn btn-custom btn-sm" OnClick="btnVer_Click" />
-                    </ItemTemplate>
-                </asp:TemplateField>
-
-                <asp:TemplateField HeaderText="Pagar">
-                    <ItemTemplate>
-                        <asp:Button ID="btnPagar" runat="server" Text="Pagar" CssClass="btn btn-custom btn-sm" OnClick="btnPagar_Click" />
-                    </ItemTemplate>
-                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Gestion">
                     <ItemTemplate>
                         <asp:Button ID="btnGestion" runat="server" Text="Gestionar" CssClass="btn btn-custom btn-sm" OnClick="btnGestion_Click" />
@@ -55,7 +42,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-
+        
     </div>
 
 

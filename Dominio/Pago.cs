@@ -11,7 +11,7 @@ namespace Dominio
     {
         public int IdPago { get; set; }
         public int IdSocio { get; set; }
-        public int IdMembresia { get; set; }
+        public int IdInscripcion { get; set; }
         public DateTime FechaPago { get; set; }
         public string MetodoPago { get; set; }
         public decimal Monto { get; set; }

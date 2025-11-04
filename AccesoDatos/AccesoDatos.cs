@@ -21,8 +21,8 @@ namespace AccesoDatos
         public AccesoDatos()
         {
             //Falta agregar tu coneccion
-            conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=Gimnasio; integrated security=true");
-            //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Gimnasio; integrated security=true");
+            conexion = new SqlConnection("server=.\\SQLEXPRESS01; database=Gimnasio_DB; integrated security=true");
+            //conexion = new SqlConnection("server=.\\SQLEXPRESS; database=Gimnasio_DB; integrated security=true");
             
             comando = new SqlCommand();
         }

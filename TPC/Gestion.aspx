@@ -48,5 +48,8 @@
                 </div>
             </div>
         </div>
+        <br />
+         <asp:Button Text="Volver" runat="server" OnClick="Unnamed_Click" CssClass="btn btn-outline-danger btn-lg"/>
     </columns>
+   
 </asp:Content>

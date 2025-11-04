@@ -15,7 +15,7 @@ namespace AccesoDatos
             AccesoDatos accesoDatos = new AccesoDatos();
 			try
 			{
-                accesoDatos.setearConsulta("SELECT s.IdSocio,s.DNI, s.Nombre, s.Apellido, s.Correo, s.Barrio, s.Direccion, s.Telefono, m.FechaVencimiento FROM Socios s inner join Membresia m ON s.IdSocio = m.IdSocio;");
+                accesoDatos.setearConsulta("select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio");
                 accesoDatos.ejecutarConsulta();
 
 				while (accesoDatos.Lector.Read())
@@ -29,11 +29,10 @@ namespace AccesoDatos
                     aux.Barrio = (string)accesoDatos.Lector["Barrio"];
                     aux.Direccion = (string)accesoDatos.Lector["Direccion"];
                     aux.Telefono = (string)accesoDatos.Lector["Telefono"];
+                    aux.Estado = (bool)accesoDatos.Lector["Estado"];
 
-					aux.Membresia = new Membresia();
-					aux.Membresia.FechaVencimiento = (DateTime)accesoDatos.Lector["FechaVencimiento"];
 
-					Lista.Add(aux);
+                    Lista.Add(aux);
                 }
 
             }

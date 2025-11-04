@@ -9,11 +9,10 @@ namespace Dominio
     public class Membresia
     {
         public int IdMembresia { get; set; }
-        public int IdSocio { get; set; }
-        public int IdTipoMembresia { get; set; }
-        public DateTime FechaPago { get; set; }
-        public DateTime FechaVencimiento { get; set; }
-        public string Estado { get; set; }
+        public string Nombre { get; set; }
+        public int DuracionDias { get; set; }
+        public decimal PrecioBase { get; set; }
+        
 
     }
 }

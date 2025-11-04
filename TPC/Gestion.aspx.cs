@@ -25,5 +25,10 @@ namespace TPC
         {
             Response.Redirect("DatosPersonales.aspx", false);
         }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListadoSocio.aspx", false);
+        }
     }
 }
