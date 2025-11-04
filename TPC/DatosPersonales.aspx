@@ -11,41 +11,41 @@
             <div class="row mb-3">
                 <div class="col">
                     <label class="fw-bold">DNI:</label>
-                    <p><%# Eval("DNI") %></p>
+                     <asp:Label ID="lblDNI" runat="server"></asp:Label>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col">
                     <label class="fw-bold">Nombre:</label>
-                    <p><%# Eval("Nombre") %></p>
+                     <asp:Label ID="lblNombre" runat="server"></asp:Label>
                 </div>
 
                 <div class="col">
                     <label class="fw-bold">Apellido:</label>
-                    <p><%# Eval("Apellido") %></p>
+                    <asp:Label ID="lblApellido" runat="server"></asp:Label>
                 </div>
 
                 <div class="col">
                     <label class="fw-bold">Email:</label>
-                    <p><%# Eval("Correo") %></p>
+                   <asp:Label ID="lblCorreo" runat="server"></asp:Label>
                 </div>
             </div>
 
             <div class="row mb-3">
                 <div class="col">
                     <label class="fw-bold">Barrio:</label>
-                    <p><%# Eval("Barrio") %></p>
+                    <asp:Label ID="lblBarrio" runat="server"></asp:Label>
                 </div>
 
                 <div class="col">
                     <label class="fw-bold">Dirección:</label>
-                    <p><%# Eval("Direccion") %></p>
+                   <asp:Label ID="lblDireccion" runat="server"></asp:Label>
                 </div>
 
                 <div class="col">
                     <label class="fw-bold">Celular:</label>
-                    <p><%# Eval("Telefono") %></p>
+                    <asp:Label ID="lblTelefono" runat="server"></asp:Label>
                 </div>
             </div>
         </div>

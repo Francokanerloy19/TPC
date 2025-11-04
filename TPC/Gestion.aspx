@@ -39,8 +39,8 @@
                         <asp:Button ID="btnMembresia" runat="server" Text="ver membresia" CssClass="btn btn-outline-light btn-lg" />
                         <asp:Button ID="btnModificarMembresia" runat="server" Text="modificar" CssClass="btn btn-outline-warning btn-lg" />
                         <asp:Button ID="btnDarDeBajaMembresia" runat="server" Text="Dar de baja" CssClass="btn btn-outline-danger btn-lg" />
-                        <asp:Button ID="btnPagar" runat="server" Text="Pagar" CssClass="btn btn-outline-success btn-lg" />
-                        <asp:Button ID="btnVerHistorialDePagos" runat="server" Text="Ver historial de pagos" CssClass="btn btn-outline-primary btn-lg" />
+                        <asp:Button ID="btnPagar" runat="server" Text="Pagar" CssClass="btn btn-outline-success btn-lg"  OnClick="btnPagar_Click"/>
+                        <asp:Button ID="btnVerHistorialDePagos" runat="server" Text="Ver historial de pagos" CssClass="btn btn-outline-primary btn-lg" OnClick="btnVerHistorialDePagos_Click" />
                     </div>
                 </div>
                 <div class="card-footer text-center text-muted small">

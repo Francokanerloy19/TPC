@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Dominio;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Dominio;
 
 
 namespace AccesoDatos
@@ -47,5 +48,47 @@ namespace AccesoDatos
 			}
 			return Lista;  
 		}
+
+        public Socio filtrarPorID(int id)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("select  DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono  from Socio where IdSocio = @id");
+                accesoDatos.setearParametros("@id", id);
+                accesoDatos.ejecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Socio socio = new Socio();
+
+                    socio.DNI = (string)accesoDatos.Lector["DNI"];
+                    socio.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    socio.Apellido = (string)accesoDatos.Lector["Apellido"];
+                    socio.Correo = (string)accesoDatos.Lector["Correo"];
+                    socio.Barrio = (string)accesoDatos.Lector["Barrio"];
+                    socio.Direccion = (string)accesoDatos.Lector["Direccion"];
+                    socio.Telefono = (string)accesoDatos.Lector["Telefono"];
+
+
+                    return socio;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+            return null;
+        }
+
     }
 }
+

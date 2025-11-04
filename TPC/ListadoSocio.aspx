@@ -29,7 +29,8 @@
             AutoGenerateColumns="False"
             DataKeyNames="IdSocio"
             CssClass="table table-dark table-striped table-hover text-center"
-            BorderStyle="None">
+            BorderStyle="None"
+             OnRowCommand="gvSocios_RowCommand">
             <Columns>
                 <asp:BoundField DataField="IdSocio" HeaderText="#" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
@@ -37,7 +38,7 @@
 
                 <asp:TemplateField HeaderText="Gestion">
                     <ItemTemplate>
-                        <asp:Button ID="btnGestion" runat="server" Text="Gestionar" CssClass="btn btn-custom btn-sm" OnClick="btnGestion_Click" />
+                        <asp:Button ID="btnGestion" runat="server" Text="Gestionar" CssClass="btn btn-custom btn-sm" CommandName="GestionarSocio" CommandArgument='<%# Eval("IdSocio") %>'/>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
