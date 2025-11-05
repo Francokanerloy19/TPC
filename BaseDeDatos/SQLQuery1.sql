@@ -93,11 +93,12 @@
 ---- ==========================
 ---- SOCIOS
 ---- ==========================
---INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Estado) VALUES
---('40123456', 'Juan', 'Pérez', 'juanperez@gmail.com', '1165891234', 1),
---('40234567', 'Lucía', 'Gómez', 'luciagomez@gmail.com', '1145678912', 1),
---('40345678', 'Martín', 'López', 'martinlopez@gmail.com', '1134567891', 1);
+--INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Direccion, Barrio, Estado) VALUES
+--('40123456', 'Juan', 'Pérez', 'juanperez@gmail.com', '1165891234', 'Av. Corrientes 3200', 'Villa Crespo', 1),
+--('40234567', 'Lucía', 'Gómez', 'luciagomez@gmail.com', '1145678912', 'Calle Malabia 1500', 'Palermo', 1),
+--('40345678', 'Martín', 'López', 'martinlopez@gmail.com', '1134567891', 'Av. San Martín 4500', 'Chacarita', 1);
 --GO
+
 
 ---- ==========================
 ---- MEMBRESÍA (única)
@@ -160,7 +161,11 @@
 --(3, 3, '2025-11-05', 15500.00, 'Débito'); -- 12000 + 3500
 --GO
 
-select IdSocio, DNI, Nombre, Apellido, Correo, , Telefono, Estado from Socio 
+select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio 
+
+select  DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono  from Socio where IdSocio = 3
+
+select * from Socio
 
 SELECT 
     s.Nombre + ' ' + s.Apellido AS Socio,

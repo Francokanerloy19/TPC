@@ -16,6 +16,7 @@
             const txtBarrio = document.getElementById("<%=txtBarrio.ClientID%>");
             const exRegularBarrio = /^[A-Za-zÁÉÍÓÚáéíóúÑñ]{4,}(?: [A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$/;
             const txtCelular = document.getElementById("<%=txtCelular.ClientID%>");
+            const exRegularCelular =  const txtCelular = document.getElementById("<%=txtCelular.ClientID%>");
             const exRegularCelular = /^(?:(?:\+54)?(?:9)?)(?:11|[2368]\d)(?:\d{6,8})$/;
 
 
@@ -96,13 +97,13 @@
 
     </script>
 
-    <div class="container mt-4">
-        <div class="card shadow-lg border-primary">
+    <div class="container mt-4 bg-dark text-white">
+        <div class="card shadow-lg border-primary bg-dark text-white">
             <div class="card-header bg-primary text-white text-center">
                 <h3>Datos personales</h3>
             </div>
 
-            <div class="card-body bg-light">
+            <div class="card-body bg-dark text-white">
                 <div class="row mb-3">
                     <div class="col">
                         <label for="txtDNI" class="form-label">DNI</label>
@@ -154,13 +155,13 @@
                         <label for="txtCelular" class="form-label">Celular</label>
                         <asp:TextBox runat="server" ID="txtCelular" CssClass="form-control" />
                         <asp:RequiredFieldValidator ID="rfvtxtCelular" runat="server" ControlToValidate="txtCelular" ErrorMessage="El numero es obligatorio" CssClass="text-danger" Display="Dynamic" />
-                        <asp:RegularExpressionValidator ID="revtxtCelular" runat="server" ControlToValidate="txtCelular" ValidationExpression="/^(?:(?:\+54)?(?:9)?)(?:11|[2368]\d)(?:\d{6,8})$/" ErrorMessage="Ingrese un celular valido" Display="Dynamic" />
+                        <asp:RegularExpressionValidator ID="revtxtCelular" runat="server" ControlToValidate="txtCelular" ValidationExpression="^(?:\+54)?9?(?:11|[2368]\d)\d{6,8}$" ErrorMessage="Ingrese un celular valido" Display="Dynamic" />
                     </div>
                 </div>
             </div>
 
-            <div class="card-footer text-center bg-white">
-                <asp:Button Text="Agregar" ID="btnAgregar" runat="server" CssClass="btn btn-success mx-2" OnClientClick="return validar()" />
+            <div class="card-footer text-center bg-dark">
+                <asp:Button Text="Agregar" ID="btnAgregar" runat="server" CssClass="btn btn-success mx-2" OnClientClick="return validar()"  OnClick="btnAgregar_Click"/>
                 <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger mx-2" OnClick="btnCancelar_Click" CausesValidation="false" />
             </div>
         </div>

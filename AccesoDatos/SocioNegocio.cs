@@ -89,6 +89,38 @@ namespace AccesoDatos
             return null;
         }
 
+        public void modificar(Socio socio)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE Socio SET Direccion = @Direccion , Barrio = @Barrio ,DNI = @DNI, Nombre = @Nombre, Apellido = @Apellido , Correo = @Correo , Telefono = @Telefono WHERE IdSocio = @id;");
+                
+                accesoDatos.setearParametros("@Direccion", socio.Direccion);
+                accesoDatos.setearParametros("@Barrio", socio.Barrio);
+                accesoDatos.setearParametros("@DNI", socio.DNI);
+                accesoDatos.setearParametros("@Nombre", socio.Nombre);
+                accesoDatos.setearParametros("@Apellido", socio.Apellido);
+                accesoDatos.setearParametros("@Correo", socio.Correo);
+                accesoDatos.setearParametros("@Telefono", socio.Telefono);
+                accesoDatos.setearParametros("@id", socio.IdSocio);
+                accesoDatos.ejecutarConsulta();
+
+               
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+            
+        }
     }
 }
 
