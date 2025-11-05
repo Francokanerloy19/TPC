@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -147,6 +148,46 @@ namespace AccesoDatos
             }
 
         }
+
+        public List<Socio> ListarPorVencer()
+        {
+            List<Socio> Lista = new List<Socio>();
+            AccesoDatos accesoDatos = new AccesoDatos();
+            try
+            {
+                accesoDatos.setearConsulta("SELECT S.IdSocio ,S.Nombre, S.Apellido,S.Correo , I.FechaInscripcion, I.FechaVencimiento, I.Estado FROM Socio S INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio WHERE I.Estado = 1;");
+                accesoDatos.ejecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Socio aux = new Socio();
+                    aux.IdSocio = (int)accesoDatos.Lector["IdSocio"];
+                    aux.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    aux.Apellido = (string)accesoDatos.Lector["Apellido"];
+                    aux.Correo = (string)accesoDatos.Lector["Correo"];
+                    aux.Estado = (bool)accesoDatos.Lector["Estado"];
+                    aux.inscripcion = new Inscripción();
+                    aux.inscripcion.FechaInscripcion = (DateTime)accesoDatos.Lector["FechaInscripcion"];
+                    aux.inscripcion.FechaVencimiento = (DateTime)accesoDatos.Lector["FechaVencimiento"];
+
+
+
+                    Lista.Add(aux);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+            return Lista;
+        }
+
     }
 }
 

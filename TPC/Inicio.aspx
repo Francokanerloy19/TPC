@@ -1,14 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Inicio.aspx.cs" Inherits="TPC.Inicio" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Panel del Gimnasio</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+   
         <style>
             body {
                 background-color: #0d1117;
@@ -33,8 +27,7 @@
                 border: none;
             }
         </style>
-    </head>
-    <body>
+    
 
         <div class="container py-3">
 
@@ -45,6 +38,7 @@
                 <div class="col-md-6">
                     <div class="card bg-dark priority-high p-3">
                         <h6 class="text-danger"><i class="bi bi-exclamation-circle"></i>Alta Prioridad</h6>
+                        <asp:Label ID="mbinactivas" runat="server" ForeColor="White" Font-Size="XX-Large" />
                         <p class="text-secondary">Membresías inactivas.</p>
                         <asp:Button Text="Resolver Ahora" class="btn btn-custom btn-sm" runat="server" />
                     </div>
@@ -64,32 +58,32 @@
             <div class="row text-center mb-4">
                 <div class="col-6 mb-3">
                     <div class="card bg-dark p-3">
-                        <i class="bi bi-people fs-4"></i>
-                        <h4>452</h4>
+                        <i class="bi bi-people fs-4 text-white"></i>
+                        <asp:Label ID="SociosActivos" runat="server" ForeColor="White" Font-Size="XX-Large" />
                         <!-- Hace referencia a los socios activos -->
                         <p class="text-secondary mb-0">Socios Activos</p>
+                        
                     </div>
                 </div>
                 <div class="col-6 mb-3">
                     <div class="card bg-dark p-3">
-                        <i class="bi bi-cash-coin fs-4"></i>
-                        <h4>$12.5k</h4>
+                        <i class="bi bi-cash-coin fs-4  text-white"></i>
+                        
                         <!--Recaudacion mensual -->
                         <p class="text-secondary mb-0">Ingresos Mensuales</p>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="card bg-dark p-3">
-                        <i class="bi bi-calendar-x fs-4"></i>
-                        <h4>12</h4>
-                        <!-- Socios que estan a una semana del vencimiento de la menbresia -->
-                        <p class="text-secondary mb-0">Vencen Esta Semana</p>
+                        <i class="bi bi-calendar-x fs-4  text-white"></i>
+                        
+                        <p class="text-secondary mb-0">Socio inactivos</p>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="card bg-dark p-3">
-                        <i class="bi bi-person-plus fs-4"></i>
-                        <h4>25</h4>
+                        <i class="bi bi-person-plus fs-4  text-white"></i>
+                        
                         <!-- Nuevos socios -->
                         <p class="text-secondary mb-0">Nuevos Socios (Mes)</p>
                     </div>
@@ -105,7 +99,7 @@
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
                     <asp:BoundField DataField="Correo" HeaderText="Correo" />
-                    <asp:BoundField DataField="FechaVencimiento" HeaderText="Vencimiento" DataFormatString="{0:dd MMM yyyy}" />
+                    <asp:BoundField DataField="inscripcion.FechaVencimiento" HeaderText="Vencimiento" DataFormatString="{0:dd MMM yyyy}" />
                     <asp:TemplateField HeaderText="Acción">
                         <ItemTemplate>
                             <asp:Button ID="btnContactar" runat="server" Text="Contactar" CssClass="btn btn-custom btn-sm" CommandName="Contactar" CommandArgument='<%# Eval("Correo") %>' />
@@ -117,7 +111,6 @@
 
 
 
-    </body>
-    </html>
+    
 
 </asp:Content>
