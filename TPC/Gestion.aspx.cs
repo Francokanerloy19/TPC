@@ -33,9 +33,6 @@ namespace TPC
 
         protected void btnVerDatosPersonales_Click(object sender, EventArgs e)
         {
-            //SocioNegocio negocio = new SocioNegocio();
-            //Socio socio = negocio.filtrarPorID(int.Parse(Session["IdSocioSeleccionado"].ToString()));
-            //Session["SocioSleccionado"] = socio;
             Response.Redirect("DatosPersonales.aspx", false);
         }
 
@@ -54,6 +51,15 @@ namespace TPC
         {
            
             Response.Redirect("Pagos.aspx", false);
+        }
+
+        protected void btnDarDeBaja_Click(object sender, EventArgs e)
+        {
+            Socio socioaux = new Socio();
+            socioaux.IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+
+            SocioNegocio negocio = new SocioNegocio();
+            negocio.baja(socioaux.IdSocio);
         }
     }
 }

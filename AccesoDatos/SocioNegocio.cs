@@ -16,7 +16,7 @@ namespace AccesoDatos
             AccesoDatos accesoDatos = new AccesoDatos();
 			try
 			{
-                accesoDatos.setearConsulta("select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio");
+                accesoDatos.setearConsulta("select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio where Estado = 1");
                 accesoDatos.ejecutarConsulta();
 
 				while (accesoDatos.Lector.Read())
@@ -120,6 +120,32 @@ namespace AccesoDatos
                 accesoDatos.cerrarConexion();
             }
             
+        }
+
+        public void baja(int id)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE Socio SET Estado = 0 WHERE IdSocio = @id;");
+
+                accesoDatos.setearParametros("@id", id);
+                accesoDatos.ejecutarConsulta();
+
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
         }
     }
 }
