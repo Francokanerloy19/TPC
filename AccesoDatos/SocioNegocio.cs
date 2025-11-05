@@ -171,8 +171,15 @@ namespace AccesoDatos
                     aux.inscripcion.FechaVencimiento = (DateTime)accesoDatos.Lector["FechaVencimiento"];
 
 
+                    // Calcular días restantes
+                    TimeSpan diferencia = aux.inscripcion.FechaVencimiento - DateTime.Now;
+                    int diasRestantes = diferencia.Days;
 
-                    Lista.Add(aux);
+                    if (diasRestantes <= 3)
+                    {
+                        Lista.Add(aux);
+                    }
+                    
                 }
 
             }

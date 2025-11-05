@@ -32,21 +32,11 @@ namespace TPC
 
         private void CargarSociosPorVencer()
         {
-            //// Crear tabla en memoria
-            //DataTable dt = new DataTable();
-            //dt.Columns.Add("IdSocio", typeof(int));
-            //dt.Columns.Add("Nombre", typeof(string));
-            //dt.Columns.Add("Apellido", typeof(string));
-            //dt.Columns.Add("Correo", typeof(string));
-            //dt.Columns.Add("FechaVencimiento", typeof(DateTime));
-
-            //// Agregar filas de prueba (hardcodeadas)
-            //dt.Rows.Add(1, "Franco", "Kaner", "franco@mail.com", new DateTime(2025, 10, 31));
-            //dt.Rows.Add(2, "Lucía", "Infante", "lucia@mail.com", new DateTime(2025, 11, 2));
-            //dt.Rows.Add(3, "Carlos", "Pérez", "carlos@mail.com", new DateTime(2025, 11, 5));
             gvSociosPorVencer.DataBind();
             SocioNegocio negocio = new SocioNegocio();
             List<Socio> listaSociosPorVencer = negocio.ListarPorVencer();
+          
+
             // Cargar datos en el GridView
             gvSociosPorVencer.DataSource = listaSociosPorVencer;
             gvSociosPorVencer.DataBind();
