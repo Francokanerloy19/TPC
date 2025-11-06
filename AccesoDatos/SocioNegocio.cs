@@ -195,6 +195,37 @@ namespace AccesoDatos
             return Lista;
         }
 
+        public int agregar(Socio socio)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta(" INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Direccion, Barrio, Estado) VALUES (@DNI, @Nombre, @Apellido, @Correo, @Telefono, @Direccion, @Barrio, 1) SELECT SCOPE_IDENTITY()");
+
+                accesoDatos.setearParametros("@Direccion", socio.Direccion);
+                accesoDatos.setearParametros("@Barrio", socio.Barrio);
+                accesoDatos.setearParametros("@DNI", socio.DNI);
+                accesoDatos.setearParametros("@Nombre", socio.Nombre);
+                accesoDatos.setearParametros("@Apellido", socio.Apellido);
+                accesoDatos.setearParametros("@Correo", socio.Correo);
+                accesoDatos.setearParametros("@Telefono", socio.Telefono);
+                
+                int nuevoid = Convert.ToInt32(accesoDatos.ejecutarEscalar()); // devulve el id del nuevo socio
+                return nuevoid;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
+
     }
 }
 

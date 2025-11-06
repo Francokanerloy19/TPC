@@ -216,7 +216,7 @@
             <br />
             <div class="col-12">
 
-                <asp:Button Text="Agregar" ID="btnAgregar" runat="server" CssClass="btn btn-success" OnClientClick="return validar()" />
+                <asp:Button Text="Agregar" ID="btnAgregar" runat="server" CssClass="btn btn-success" OnClientClick="return validar()" OnClick="btnAgregar_Click" />
                 <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger" OnClick="btnCancelar_Click" CausesValidation="false"/>
             </div>
         </div>
