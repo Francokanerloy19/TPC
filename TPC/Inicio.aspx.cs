@@ -18,12 +18,13 @@ namespace TPC
             {
                 CargarSociosPorVencerCorreo();
                 //cargarinscipcionesvencidas();
-                //cargarinscipcionesTresdiasPorVencer();
+                cargarinscipcionesPorVencer();
 
                 //cargarSocioActivos();
                 //cargarinscipcionesTresdiasPorVencer();
                 //cargarinscipcionesTresdiasPorVencer();
                 //cargarinscipcionesTresdiasPorVencer();
+                //MVencer.Text = "234";
                 SociosActivos.Text = "2";
                 mbinactivas.Text = "1";
             }
@@ -35,15 +36,26 @@ namespace TPC
             int diasAntesVencer = 3;
             gvSociosPorVencer.DataBind();
             SocioNegocio negocio = new SocioNegocio();
-            List<Socio> listaSociosPorVencer = negocio.ListarPorVencer(diasAntesVencer);
+            List<Socio> CargarSociosPorVencerCorreo = negocio.ListarPorVencer(diasAntesVencer);
           
 
             // Cargar datos en el GridView
-            gvSociosPorVencer.DataSource = listaSociosPorVencer;
+            gvSociosPorVencer.DataSource = CargarSociosPorVencerCorreo;
             gvSociosPorVencer.DataBind();
         }
+        private void cargarinscipcionesPorVencer()
+        {
+            int diasParaVencer = 7;
+       
+            SocioNegocio negocio = new SocioNegocio();
+            List<Socio> listadoSocioPorVencer = negocio.ListarPorVencer(diasParaVencer);
+            int cantidad = listadoSocioPorVencer.Count; // Cuento los socios agregados a la lista
 
-    
+            MVencer.Text = cantidad.ToString(); // Mostrás la cantidad en tu Label
+
+        }
+
+
      protected void gvSociosPorVencer_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Contactar")
@@ -52,6 +64,11 @@ namespace TPC
                 // Acá podés implementar el envío de mail, por ejemplo:
                 // EnviarCorreo(correo);
             }
+        }
+
+        protected void btnMVencer_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListadoSociosPorVencer.aspx", false);
         }
     }
 

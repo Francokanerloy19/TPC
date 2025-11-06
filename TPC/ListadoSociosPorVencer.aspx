@@ -1,7 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListadoSocio.aspx.cs" Inherits="TPC.ListadoSocio" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListadoSociosPorVencer.aspx.cs" Inherits="TPC.ListadoSociosPorVencer" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
 
     <h2>Listado de socios</h2>
 
@@ -17,10 +16,8 @@
             border: none;
         }
     </style>
+    <asp:Button ID="volver" runat="server" Text="volver" CssClass="btn btn-outline-danger btn-lg" OnClick="volver_Click" />
 
-    <br />
-    <asp:Button ID="btnAgregar" runat="server" Text="Agregar nuevo socio" CssClass="btn btn-custom btn-sm" OnClick="btnAgregar_Click" />
-    <br />
     <div class="container py-3">
 
 
@@ -30,19 +27,10 @@
                 <asp:BoundField DataField="IdSocio" HeaderText="#" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
-
-                <asp:TemplateField HeaderText="Gestion">
-                    <ItemTemplate>
-                        <asp:Button ID="btnGestion" runat="server" Text="Gestionar" CssClass="btn btn-custom btn-sm" CommandName="GestionarSocio" CommandArgument='<%# Eval("IdSocio") %>'/>
-                    </ItemTemplate>
-                </asp:TemplateField>
+                <asp:BoundField DataField="Correo" HeaderText="Correo" />
+                <asp:BoundField DataField="inscripcion.FechaVencimiento" HeaderText="Vencimiento" DataFormatString="{0:dd MMM yyyy}" />
             </Columns>
         </asp:GridView>
-        
+
     </div>
-
-
-
-
-
 </asp:Content>

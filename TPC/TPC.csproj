@@ -121,6 +121,7 @@
     <Content Include="HistorialPago.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="ListadoSocio.aspx" />
+    <Content Include="ListadoSociosPorVencer.aspx" />
     <Content Include="Membresia.aspx" />
     <Content Include="ModificarSocio.aspx" />
     <Content Include="NuevoSocio.aspx" />
@@ -233,6 +234,13 @@
     </Compile>
     <Compile Include="ListadoSocio.aspx.designer.cs">
       <DependentUpon>ListadoSocio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListadoSociosPorVencer.aspx.cs">
+      <DependentUpon>ListadoSociosPorVencer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoSociosPorVencer.aspx.designer.cs">
+      <DependentUpon>ListadoSociosPorVencer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Membresia.aspx.cs">
       <DependentUpon>Membresia.aspx</DependentUpon>

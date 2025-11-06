@@ -47,8 +47,9 @@
                 <div class="col-md-6">
                     <div class="card bg-dark priority-medium p-3">
                         <h6 class="text-warning"><i class="bi bi-hourglass-split"></i>Prioridad Media</h6>
+                        <asp:Label ID="MVencer" runat="server" ForeColor="White" Font-Size="XX-Large" />
                         <p class="text-secondary">Membresías por Vencer.</p>
-                        <asp:Button Text="Ver Todos" class="btn btn-secondary btn-sm" runat="server" />
+                        <asp:Button ID="btnMVencer" Text="Ver Todos" class="btn btn-secondary btn-sm" runat="server" OnClick="btnMVencer_Click" />
                     </div>
                 </div>
             </div>

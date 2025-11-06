@@ -15,6 +15,5 @@ namespace Dominio
         public DateTime FechaVencimiento { get; set; }
         public string Estado { get; set; }
 
-        //public int DiasRestantes { get; set; }
     }
 }
