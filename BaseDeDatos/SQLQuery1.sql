@@ -180,3 +180,10 @@ INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia;
 
 SELECT s.Nombre + ' ' + s.Apellido AS Socio,m.Nombre AS Membresia, a.NombreActividad AS ActividadExtra, p.FechaPago, p.Monto, p.MetodoPago FROM Pago p INNER JOIN Socio s ON p.IdSocio = s.IdSocio INNER JOIN Inscripcion i ON p.IdInscripcion = i.IdInscripcion INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad ORDER BY s.Nombre, p.FechaPago;
 
+
+
+SELECT S.IdSocio ,S.Nombre, S.Apellido,S.Correo ,I.FechaInscripcion,I.FechaVencimiento, I.Estado FROM Socio S INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio WHERE I.Estado = 1;
+
+UPDATE Inscripcion
+SET FechaVencimiento = '2025-11-08'
+WHERE IdSocio = 1;

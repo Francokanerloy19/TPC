@@ -149,7 +149,7 @@ namespace AccesoDatos
 
         }
 
-        public List<Socio> ListarPorVencer()
+        public List<Socio> ListarPorVencer(int diasAntesVencer)
         {
             List<Socio> Lista = new List<Socio>();
             AccesoDatos accesoDatos = new AccesoDatos();
@@ -175,7 +175,7 @@ namespace AccesoDatos
                     TimeSpan diferencia = aux.inscripcion.FechaVencimiento - DateTime.Now;
                     int diasRestantes = diferencia.Days;
 
-                    if (diasRestantes <= 3)
+                    if (diasRestantes <= diasAntesVencer)
                     {
                         Lista.Add(aux);
                     }

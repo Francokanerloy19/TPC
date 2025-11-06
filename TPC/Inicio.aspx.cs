@@ -16,7 +16,7 @@ namespace TPC
         {
             if (!IsPostBack)
             {
-                CargarSociosPorVencer();
+                CargarSociosPorVencerCorreo();
                 //cargarinscipcionesvencidas();
                 //cargarinscipcionesTresdiasPorVencer();
 
@@ -30,11 +30,12 @@ namespace TPC
 
         }
 
-        private void CargarSociosPorVencer()
+        private void CargarSociosPorVencerCorreo()
         {
+            int diasAntesVencer = 3;
             gvSociosPorVencer.DataBind();
             SocioNegocio negocio = new SocioNegocio();
-            List<Socio> listaSociosPorVencer = negocio.ListarPorVencer();
+            List<Socio> listaSociosPorVencer = negocio.ListarPorVencer(diasAntesVencer);
           
 
             // Cargar datos en el GridView
