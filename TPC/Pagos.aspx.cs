@@ -1,9 +1,13 @@
-﻿using System;
+﻿using AccesoDatos;
+using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+
+
 
 namespace TPC
 {
@@ -11,17 +15,41 @@ namespace TPC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CargarMembresia();
+            CargarActividadExtra();
+        }
+
+        private void CargarMembresia()
+        {
+            
+            MembresiaNegocio negocio = new MembresiaNegocio();
+            List<Dominio.Membresia> ListarMembresias = negocio.Listar();
+            ddlMembresia.DataSource = ListarMembresias;
+            ddlMembresia.DataTextField = "Nombre";        // lo que se muestra
+            ddlMembresia.DataValueField = "IdMembresia";  // el valor interno
+            ddlMembresia.DataBind();
+            
+        }
+        private void CargarActividadExtra()
+        {
+
+            ActividadExtraNegocio negocio = new ActividadExtraNegocio();
+            List<Dominio.ActividadExtra> ListarActividadExtra = negocio.Listar();
+            ddlActividadExtra.DataSource = ListarActividadExtra;
+            ddlActividadExtra.DataTextField = "NombreActividad";        // lo que se muestra
+            ddlActividadExtra.DataValueField = "IdActividad";  // el valor interno
+            ddlActividadExtra.DataBind();
 
         }
 
-        protected void btnBasica_Click(object sender, EventArgs e)
+        protected void ddlMembresia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Guardaria la eleccion y redirigiria
+            Session["membresiaSeleccionada"] = ddlMembresia.SelectedValue;
         }
 
-        protected void btnPremium_Click(object sender, EventArgs e)
+        protected void ddlActividadExtra_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Guardaria la eleccion y redirigiria
+            Session["ActividadExtraSeleccionada"] = ddlActividadExtra.SelectedValue;
         }
     }
 }

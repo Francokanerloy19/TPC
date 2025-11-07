@@ -28,12 +28,7 @@
                             <h4>Membresía Básica</h4>
                         </div>
                         <div class="card-body bg-dark text-light">
-                            <select class="form-select  bg-dark text-light select-largo" style="font-size: 1.2rem; padding: 0.75rem;" aria-label="Tipo de membresía">
-                                <option selected>Tipo de membresia</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            <asp:DropDownList ID="ddlMembresia" AutoPostBack="true" OnSelectedIndexChanged="ddlMembresia_SelectedIndexChanged" runat="server" CssClass="form-select bg-dark text-light select-largo" Style="font-size: 1.2rem; padding: 0.75rem;" aria-label="Tipo de membresía"></asp:DropDownList>
                         </div>
                     </div>
                 </div>
@@ -45,12 +40,8 @@
                             <h4>Sumar Actividades</h4>
                         </div>
                         <div class="card-body bg-dark text-light">
-                            <select class="form-select  bg-dark text-light select-largo" style="font-size: 1.2rem; padding: 0.75rem;" aria-label="Tipo de membresía">
-                                <option selected>Tipo de membresia</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
+                            <asp:DropDownList ID="ddlActividadExtra" AutoPostBack="true" OnSelectedIndexChanged="ddlActividadExtra_SelectedIndexChanged" runat="server" CssClass="form-select bg-dark text-light select-largo" Style="font-size: 1.2rem; padding: 0.75rem;" aria-label="Sumar actividad extra"></asp:DropDownList>
+
                         </div>
                     </div>
                 </div>

@@ -16,7 +16,7 @@ namespace TPC
             {
                 if (Session["IdSocioSeleccionado"] != null)
                 {
-                    int idSocio = (int)Session["IdSocioSeleccionado"];
+                    int idSocio = Convert.ToInt32(Session["IdSocioSeleccionado"]);
 
 
                     // Cargar los pagos del socio seleccionado
