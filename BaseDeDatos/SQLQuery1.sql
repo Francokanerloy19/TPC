@@ -111,7 +111,7 @@
 ---- ACTIVIDADES EXTRA
 ---- ==========================
 --INSERT INTO ActividadExtra (NombreActividad, PrecioExtra, Descripcion) VALUES
---('Zumba', 3000.00, 'Clase de baile y ejercicio aeróbico al ritmo de la música'),
+--('Sin actividad extra', 0.00, 'Pase libre'),
 --('GAP', 2500.00, 'Entrenamiento enfocado en glúteos, abdominales y piernas'),
 --('Karate', 3500.00, 'Clase de artes marciales con técnicas de defensa personal'),
 --('Yoga', 2000.00, 'Clase de estiramiento, equilibrio y respiración');
@@ -187,3 +187,33 @@ SELECT S.IdSocio ,S.Nombre, S.Apellido,S.Correo ,I.FechaInscripcion,I.FechaVenci
 UPDATE Inscripcion
 SET FechaVencimiento = '2025-11-08'
 WHERE IdSocio = 1;
+
+UPDATE ActividadExtra
+SET 
+    NombreActividad = 'Sin actividad extra',
+    PrecioExtra = 0.00,
+    Descripcion = 'Pase libre'
+WHERE NombreActividad = 'Zumba';
+
+, PrecioExtra, Descripcion
+SELECT COUNT(*) AS CantidadSociosActivos
+FROM Socio S
+INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio
+WHERE I.Estado = 1;
+
+
+SELECT SUM(M.PrecioBase + ISNULL(IA.PrecioFinal, 0)) AS TotalIngresos, MONTH(I.FechaInscripcion) AS Mes, YEAR(I.FechaInscripcion) AS Anio FROM Inscripcion I INNER JOIN Membresia M ON I.IdMembresia = M.IdMembresia LEFT JOIN InscripcionActividad IA ON I.IdInscripcion = IA.IdInscripcion WHERE MONTH(I.FechaInscripcion) = 11 AND YEAR(I.FechaInscripcion) = 2025 GROUP BY YEAR(I.FechaInscripcion), MONTH(I.FechaInscripcion);
+
+SELECT 
+    SUM(M.PrecioBase + ISNULL(IA.PrecioFinal, 0)) AS TotalIngresos,
+    MONTH(I.FechaInscripcion) AS Mes,
+    YEAR(I.FechaInscripcion) AS Anio
+FROM Inscripcion I
+INNER JOIN Membresia M ON I.IdMembresia = M.IdMembresia
+LEFT JOIN InscripcionActividad IA ON I.IdInscripcion = IA.IdInscripcion
+GROUP BY YEAR(I.FechaInscripcion), MONTH(I.FechaInscripcion)
+ORDER BY Anio, Mes;
+
+
+
+INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Direccion, Barrio, Estado) VALUES (@DNI, @Nombre, @Apellido, @Correo, @Telefono, @Direccion, @Barrio, 1)
