@@ -188,14 +188,8 @@ UPDATE Inscripcion
 SET FechaVencimiento = '2025-11-08'
 WHERE IdSocio = 1;
 
-UPDATE ActividadExtra
-SET 
-    NombreActividad = 'Sin actividad extra',
-    PrecioExtra = 0.00,
-    Descripcion = 'Pase libre'
-WHERE NombreActividad = 'Zumba';
 
-, PrecioExtra, Descripcion
+
 SELECT COUNT(*) AS CantidadSociosActivos
 FROM Socio S
 INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio
@@ -217,3 +211,32 @@ ORDER BY Anio, Mes;
 
 
 INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Direccion, Barrio, Estado) VALUES (@DNI, @Nombre, @Apellido, @Correo, @Telefono, @Direccion, @Barrio, 1)
+
+
+---- ==========================
+---- MEMBRESÍA (única)
+---- ==========================
+--INSERT INTO Membresia (Nombre, DuracionDias, PrecioBase) VALUES
+--('Pase libre', 30, 36000.00);
+select IdMembresia ,Nombre, DuracionDias, PrecioBase from Membresia
+
+---- ==========================
+---- ACTIVIDADES EXTRA
+---- ==========================
+--INSERT INTO ActividadExtra (NombreActividad, PrecioExtra, Descripcion) VALUES
+--('Sin actividad extra', 0.00, 'Pase libre'),
+--('GAP', 2500.00, 'Entrenamiento enfocado en glúteos, abdominales y piernas'),
+--('Karate', 3500.00, 'Clase de artes marciales con técnicas de defensa personal'),
+--('Yoga', 2000.00, 'Clase de estiramiento, equilibrio y respiración');
+--GO
+select IdActividad ,NombreActividad, PrecioExtra, Descripcion from ActividadExtra
+
+--Consuta para mostrar el pago preciomembrecia y precioExtra
+SELECT 
+    M.Nombre AS NombreMembresia,
+    M.PrecioBase,
+    A.NombreActividad,
+    A.PrecioExtra
+FROM Membresia M, ActividadExtra A
+WHERE M.IdMembresia = @idMembresia
+  AND A.IdActividad = @idActividad;

@@ -49,8 +49,17 @@ namespace TPC
 
         protected void btnPagar_Click(object sender, EventArgs e)
         {
-           
-            Response.Redirect("Pagos.aspx", false);
+            // fecha hardcodeada
+            DateTime FechaVencimiento = DateTime.Parse("8/11/2025");
+            if (FechaVencimiento <= DateTime.Now)
+            {
+                Response.Redirect("Pagos.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("Yapago.aspx", false);
+            }
+            
         }
 
         protected void btnDarDeBaja_Click(object sender, EventArgs e)

@@ -58,5 +58,5 @@
 
         </div>
     </div>
-    <asp:Label id="lbl" runat="server" />
+    <asp:Label id="lbl" CssClass="bg-danger" runat="server" />
 </asp:Content>

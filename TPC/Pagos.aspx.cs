@@ -14,25 +14,27 @@ namespace TPC
 {
     public partial class Pagos : System.Web.UI.Page
     {
+        int idSocio;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-    {
-        CargarMembresia();
-        CargarActividadExtra();
-    }
+            {
+                CargarMembresia();
+                CargarActividadExtra();
+                
+            }
         }
 
         private void CargarMembresia()
         {
-            
+
             MembresiaNegocio negocio = new MembresiaNegocio();
             List<Dominio.Membresia> ListarMembresias = negocio.Listar();
             ddlMembresia.DataSource = ListarMembresias;
             ddlMembresia.DataTextField = "Nombre";        // lo que se muestra
             ddlMembresia.DataValueField = "IdMembresia";  // el valor interno
             ddlMembresia.DataBind();
-            
+
         }
         private void CargarActividadExtra()
         {
@@ -73,14 +75,14 @@ namespace TPC
                 Session["actividadExtraSeleccionada"] = null;
             }
 
-            
-          
+
+
         }
 
         protected void btnContinuar_Click(object sender, EventArgs e)
         {
             if (Session["membresiaSeleccionada"] != null && Session["actividadExtraSeleccionada"] != null)
-                lbl.Text = "Membresía seleccionada: " + Session["membresiaSeleccionada"].ToString() + " " + "Actividad extra seleccionada: " + Session["actividadExtraSeleccionada"].ToString();
+                lbl.Text = "Membresía seleccionada: " + Session["membresiaSeleccionada"].ToString() + " " + "Actividad extra seleccionada: " + Session["actividadExtraSeleccionada"].ToString() + " "+ int.Parse(Session["IdSocioSeleccionado"].ToString());
             else
                 lbl.Text = "No se seleccionó ninguna membresía.";
         }
