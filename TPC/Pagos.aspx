@@ -28,7 +28,9 @@
                             <h4>Membresía Básica</h4>
                         </div>
                         <div class="card-body bg-dark text-light">
-                            <asp:DropDownList ID="ddlMembresia" AutoPostBack="true" OnSelectedIndexChanged="ddlMembresia_SelectedIndexChanged" runat="server" CssClass="form-select bg-dark text-light select-largo" Style="font-size: 1.2rem; padding: 0.75rem;" aria-label="Tipo de membresía"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlMembresia" AutoPostBack="true" OnSelectedIndexChanged="ddlMembresia_SelectedIndexChanged" AppendDataBoundItems="true" runat="server" CssClass="form-select bg-dark text-light select-largo" Style="font-size: 1.2rem; padding: 0.75rem;" aria-label="Tipo de membresía">
+                                <asp:ListItem Value="">Tipo de membresía</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
                 </div>
@@ -40,18 +42,21 @@
                             <h4>Sumar Actividades</h4>
                         </div>
                         <div class="card-body bg-dark text-light">
-                            <asp:DropDownList ID="ddlActividadExtra" AutoPostBack="true" OnSelectedIndexChanged="ddlActividadExtra_SelectedIndexChanged" runat="server" CssClass="form-select bg-dark text-light select-largo" Style="font-size: 1.2rem; padding: 0.75rem;" aria-label="Sumar actividad extra"></asp:DropDownList>
-
+                            <asp:DropDownList ID="ddlActividadExtra" AutoPostBack="true" OnSelectedIndexChanged="ddlActividadExtra_SelectedIndexChanged" AppendDataBoundItems="true" runat="server" CssClass="form-select bg-dark text-light select-largo" Style="font-size: 1.2rem; padding: 0.75rem;" aria-label="Sumar actividad extra">
+                                <asp:ListItem  Value="">Tipo de membresía</asp:ListItem>
+                            </asp:DropDownList>
+                            
                         </div>
                     </div>
                 </div>
             </div>
             <div class="text-center">
-                <asp:Button Text="Continuar" ID="btnContinuar" runat="server" CssClass="btn btn-success me-2" />
+                <asp:Button Text="Continuar" ID="btnContinuar" runat="server" CssClass="btn btn-success me-2"  OnClick="btnContinuar_Click"/>
                 <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger" />
             </div>
 
 
         </div>
     </div>
+    <asp:Label id="lbl" runat="server" />
 </asp:Content>

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -15,8 +16,11 @@ namespace TPC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarMembresia();
-            CargarActividadExtra();
+            if (!IsPostBack)
+    {
+        CargarMembresia();
+        CargarActividadExtra();
+    }
         }
 
         private void CargarMembresia()
@@ -44,12 +48,41 @@ namespace TPC
 
         protected void ddlMembresia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["membresiaSeleccionada"] = ddlMembresia.SelectedValue;
+            if (!string.IsNullOrEmpty(ddlMembresia.SelectedValue))
+            {
+                int membresiaSeleccionada = int.Parse(ddlMembresia.SelectedValue);
+                Session["membresiaSeleccionada"] = membresiaSeleccionada;
+            }
+            else
+            {
+                Session["membresiaSeleccionada"] = null;
+            }
         }
 
         protected void ddlActividadExtra_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session["ActividadExtraSeleccionada"] = ddlActividadExtra.SelectedValue;
+
+
+            if (!string.IsNullOrEmpty(ddlActividadExtra.SelectedValue))
+            {
+                int actividadExtraSeleccionada = int.Parse(ddlActividadExtra.SelectedValue);
+                Session["actividadExtraSeleccionada"] = actividadExtraSeleccionada;
+            }
+            else
+            {
+                Session["actividadExtraSeleccionada"] = null;
+            }
+
+            
+          
+        }
+
+        protected void btnContinuar_Click(object sender, EventArgs e)
+        {
+            if (Session["membresiaSeleccionada"] != null && Session["actividadExtraSeleccionada"] != null)
+                lbl.Text = "Membresía seleccionada: " + Session["membresiaSeleccionada"].ToString() + " " + "Actividad extra seleccionada: " + Session["actividadExtraSeleccionada"].ToString();
+            else
+                lbl.Text = "No se seleccionó ninguna membresía.";
         }
     }
 }
