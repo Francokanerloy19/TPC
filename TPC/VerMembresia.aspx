@@ -12,13 +12,15 @@
     <p class="text-center text-white  display-3">Membresia</p>
 
     <div class="centrar-vertical">
+        <columns>
 
+        
         <div class="card shadow-lg border-success">
             <div class="card-header bg-success text-white text-center">
                 <h4>Gestión del Socio</h4>
             </div>
             <div class="card-body bg-dark text-light">
-                
+
                 <div class="row mb-3">
                     <div class="col">
                         <label class="fw-bold">Membresia:</label>
@@ -38,7 +40,12 @@
                 <div class="d-flex justify-content-center gap-3">
                 </div>
             </div>
-
+             
         </div>
-    </div>
+            <br />
+            <br />
+       <asp:Button Text="Volver" ID="btnVolver" runat="server" CssClass="btn btn-outline-danger btn-lg" OnClick="btnVolver_Click" />
+
+    </columns>
+        </div>
 </asp:Content>

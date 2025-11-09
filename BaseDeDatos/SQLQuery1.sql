@@ -167,6 +167,7 @@ select  DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono  from Socio w
 
 select * from Socio
 
+-- Historial de pago
 SELECT 
     s.Nombre + ' ' + s.Apellido AS Socio,
     m.Nombre AS Membresia,
@@ -184,9 +185,9 @@ SELECT s.Nombre + ' ' + s.Apellido AS Socio,m.Nombre AS Membresia, a.NombreActiv
 
 SELECT S.IdSocio ,S.Nombre, S.Apellido,S.Correo ,I.FechaInscripcion,I.FechaVencimiento, I.Estado FROM Socio S INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio WHERE I.Estado = 1;
 
-UPDATE Inscripcion
-SET FechaVencimiento = '2025-11-08'
-WHERE IdSocio = 1;
+--UPDATE Inscripcion
+--SET FechaVencimiento = '2025-11-08'
+--WHERE IdSocio = 1;
 
 
 
@@ -240,3 +241,36 @@ SELECT
 FROM Membresia M, ActividadExtra A
 WHERE M.IdMembresia = @idMembresia
   AND A.IdActividad = @idActividad;
+
+
+SELECT 
+    i.IdInscripcion,
+    m.Nombre AS NombreMembresia,
+    i.FechaInscripcion,
+    i.FechaVencimiento,
+    i.Estado
+FROM Inscripcion i
+INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia
+WHERE i.IdSocio = 1;
+
+SELECT 
+    i.IdInscripcion,
+    s.Nombre AS NombreSocio,
+    s.Apellido AS ApellidoSocio,
+    m.Nombre AS NombreMembresia,
+    m.PrecioBase,
+    a.NombreActividad,
+    a.Descripcion,
+    a.PrecioExtra,
+    ia.PrecioFinal,
+    i.FechaInscripcion,
+    i.FechaVencimiento,
+    i.Estado
+FROM Inscripcion i
+INNER JOIN Socio s ON i.IdSocio = s.IdSocio
+INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia
+LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion
+LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad
+where s.IdSocio = 1;
+
+SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = 1 ORDER BY i.IdInscripcion ASC, a.Descripcion ASC;
