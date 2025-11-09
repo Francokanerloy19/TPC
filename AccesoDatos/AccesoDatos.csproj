@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="AccesoDatos.cs" />
     <Compile Include="ActividadExtraNegocio.cs" />
+    <Compile Include="IncripcionNegocio.cs" />
     <Compile Include="MembresiaNegocio.cs" />
     <Compile Include="PagoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

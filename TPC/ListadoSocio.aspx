@@ -31,14 +31,20 @@
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
 
+                <asp:TemplateField HeaderText="Estado">
+                    <ItemTemplate><%# Convert.ToBoolean(Eval("Estado")) ? "<span style='color:limegreen;font-size:1.5rem;'>✅</span>"  : "<span style='color:red;font-size:1.5rem;'>❌</span>" %> </ItemTemplate>
+                </asp:TemplateField>
+
+
                 <asp:TemplateField HeaderText="Gestion">
                     <ItemTemplate>
-                        <asp:Button ID="btnGestion" runat="server" Text="Gestionar" CssClass="btn btn-custom btn-sm" CommandName="GestionarSocio" CommandArgument='<%# Eval("IdSocio") %>'/>
+                        <asp:Button ID="btnGestion" runat="server" Text="Gestionar" CssClass="btn btn-custom btn-sm" CommandName="GestionarSocio" CommandArgument='<%# Eval("IdSocio") %>' />
+
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        
+
     </div>
 
 

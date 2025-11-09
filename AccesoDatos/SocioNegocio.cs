@@ -17,7 +17,7 @@ namespace AccesoDatos
             AccesoDatos accesoDatos = new AccesoDatos();
 			try
 			{
-                accesoDatos.setearConsulta("select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio where Estado = 1");
+                accesoDatos.setearConsulta("select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio");
                 accesoDatos.ejecutarConsulta();
 
 				while (accesoDatos.Lector.Read())
@@ -56,7 +56,7 @@ namespace AccesoDatos
 
             try
             {
-                accesoDatos.setearConsulta("select  DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono  from Socio where IdSocio = @id");
+                accesoDatos.setearConsulta("select  DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado  from Socio where IdSocio = @id");
                 accesoDatos.setearParametros("@id", id);
                 accesoDatos.ejecutarConsulta();
 
@@ -71,7 +71,7 @@ namespace AccesoDatos
                     socio.Barrio = (string)accesoDatos.Lector["Barrio"];
                     socio.Direccion = (string)accesoDatos.Lector["Direccion"];
                     socio.Telefono = (string)accesoDatos.Lector["Telefono"];
-
+                    socio.Estado = (bool)accesoDatos.Lector["Estado"];
 
                     return socio;
 
@@ -123,14 +123,15 @@ namespace AccesoDatos
             
         }
 
-        public void baja(int id)
+        public void baja(int id, bool estado)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
 
             try
             {
-                accesoDatos.setearConsulta("UPDATE Socio SET Estado = 0 WHERE IdSocio = @id;");
+                accesoDatos.setearConsulta("UPDATE Socio SET Estado = @Estado WHERE IdSocio = @id;");
 
+                accesoDatos.setearParametros("@Estado", estado);
                 accesoDatos.setearParametros("@id", id);
                 accesoDatos.ejecutarConsulta();
 

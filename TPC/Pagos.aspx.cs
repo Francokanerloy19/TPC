@@ -14,7 +14,7 @@ namespace TPC
 {
     public partial class Pagos : System.Web.UI.Page
     {
-        int idSocio;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

@@ -24,7 +24,7 @@ namespace TPC
             }
         }
 
-        
+
 
         protected void btnModificar_Click(object sender, EventArgs e)
         {
@@ -43,23 +43,24 @@ namespace TPC
 
         protected void btnVerHistorialDePagos_Click(object sender, EventArgs e)
         {
-            
+
             Response.Redirect("HistorialPago.aspx", false);
         }
 
         protected void btnPagar_Click(object sender, EventArgs e)
         {
-            // fecha hardcodeada
-            DateTime FechaVencimiento = DateTime.Parse("8/11/2025");
-            if (FechaVencimiento <= DateTime.Now)
-            {
+            int id = int.Parse(Session["IdSocioSeleccionado"].ToString());
+            SocioNegocio negocio = new SocioNegocio();
+            Socio socio = negocio.filtrarPorID(id);
+            if (socio.Estado == false) 
+            { 
                 Response.Redirect("Pagos.aspx", false);
             }
             else
             {
                 Response.Redirect("Yapago.aspx", false);
             }
-            
+
         }
 
         protected void btnDarDeBaja_Click(object sender, EventArgs e)
@@ -68,7 +69,31 @@ namespace TPC
             socioaux.IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
 
             SocioNegocio negocio = new SocioNegocio();
-            negocio.baja(socioaux.IdSocio);
+            negocio.baja(socioaux.IdSocio, false);
+        }
+
+        protected void btnReactivar_Click(object sender, EventArgs e)
+        {
+            Socio socioaux = new Socio();
+            socioaux.IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+
+            SocioNegocio negocio = new SocioNegocio();
+            negocio.baja(socioaux.IdSocio, true);
+        }
+
+        protected void btnMembresia_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(Session["IdSocioSeleccionado"].ToString());
+            SocioNegocio negocio = new SocioNegocio();
+            Socio socio = negocio.filtrarPorID(id);
+            if (socio.Estado == true) 
+            {
+                Response.Redirect("VerMembresia.aspx", false);
+            }
+            else
+            {
+                lblAlerta.Text = "No tiene membresia activa.";
+            }
         }
     }
 }

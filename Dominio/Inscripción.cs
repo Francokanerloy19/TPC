@@ -15,5 +15,9 @@ namespace Dominio
         public DateTime FechaVencimiento { get; set; }
         public string Estado { get; set; }
 
+        //posible aplicacion para leer la membrecia
+
+        public Membresia membresia { get; set; }
+        public ActividadExtra actividadExtra { get; set; }
     }
 }

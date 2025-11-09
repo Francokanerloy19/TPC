@@ -42,6 +42,15 @@ namespace TPC
         protected global::System.Web.UI.WebControls.Button btnDarDeBaja;
 
         /// <summary>
+        /// Control btnReactivar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReactivar;
+
+        /// <summary>
         /// Control btnMembresia.
         /// </summary>
         /// <remarks>
@@ -85,5 +94,14 @@ namespace TPC
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnVerHistorialDePagos;
+
+        /// <summary>
+        /// Control lblAlerta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlerta;
     }
 }
