@@ -37,5 +37,9 @@ namespace TPC
             gvPagos.DataBind();
         }
 
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Gestion.aspx", false);
+        }
     }
 }

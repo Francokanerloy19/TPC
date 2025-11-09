@@ -27,19 +27,23 @@
             CssClass="table table-dark table-striped table-hover text-center" BorderStyle="None">
             <Columns>
                 <asp:TemplateField HeaderText="Nombre">
-                    <ItemTemplate> <%# Eval("socio.Nombre") %></ItemTemplate>
+                    <ItemTemplate><%# Eval("socio.Nombre") %></ItemTemplate>
                 </asp:TemplateField>
 
                 <asp:TemplateField HeaderText="Apellido">
-                    <ItemTemplate> <%# Eval("socio.Apellido") %></ItemTemplate>
+                    <ItemTemplate><%# Eval("socio.Apellido") %></ItemTemplate>
                 </asp:TemplateField>
 
                 <asp:BoundField DataField="FechaPago" HeaderText="Fecha de Pago" DataFormatString="{0:dd MMM yyyy}" />
                 <asp:BoundField DataField="Monto" HeaderText="Monto" DataFormatString="{0:C}" />
                 <asp:BoundField DataField="MetodoPago" HeaderText="Método" />
+                
+                    
+                
             </Columns>
+           
         </asp:GridView>
-
+         <asp:Button Text="Volver" ID="btnVolver" runat="server" CssClass="btn btn-danger" OnClick="btnVolver_Click"/>
 
     </div>
 
