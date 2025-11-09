@@ -19,5 +19,6 @@ namespace Dominio
 
         public Membresia membresia { get; set; }
         public ActividadExtra actividadExtra { get; set; }
+
     }
 }

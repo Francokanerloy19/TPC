@@ -16,6 +16,8 @@ namespace Dominio
         public string MetodoPago { get; set; }
         public decimal Monto { get; set; }
 
-       
+        public Socio socio { get; set; }
+
+
     }
 }
