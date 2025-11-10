@@ -178,7 +178,6 @@ SELECT s.Nombre , s.Apellido,  m.Nombre AS Membresia, p.FechaPago, p.Monto, p.Me
 SELECT s.Nombre + ' ' + s.Apellido AS Socio,m.Nombre AS Membresia, a.NombreActividad AS ActividadExtra, p.FechaPago, p.Monto, p.MetodoPago FROM Pago p INNER JOIN Socio s ON p.IdSocio = s.IdSocio INNER JOIN Inscripcion i ON p.IdInscripcion = i.IdInscripcion INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad ORDER BY s.Nombre, p.FechaPago;
 
 
-
 SELECT S.IdSocio ,S.Nombre, S.Apellido,S.Correo ,I.FechaInscripcion,I.FechaVencimiento, I.Estado FROM Socio S INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio WHERE I.Estado = 1;
 
 --UPDATE Inscripcion
@@ -270,3 +269,10 @@ LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad
 where s.IdSocio = 1;
 
 SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = 1 ORDER BY i.IdInscripcion ASC, a.Descripcion ASC;
+SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = 6 ORDER BY i.IdInscripcion DESC, a.Descripcion DESC;
+
+
+SELECT i.IdInscripcion, i.IdSocio, s.DNI, i.IdMembresia, i.FechaInscripcion
+FROM Inscripcion i
+INNER JOIN Socio s ON i.IdSocio = s.IdSocio
+WHERE s.DNI = 42661010;

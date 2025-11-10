@@ -19,7 +19,7 @@ namespace TPC
                 if (Session["IdSocioSeleccionado"] != null)
                 {
                     int idSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
-                    // Ahora se puede usar el id para buscar en la base o mostrar info
+                    
                 }
             }
         }
@@ -94,6 +94,13 @@ namespace TPC
             {
                 lblAlerta.Text = "No tiene membresia activa.";
             }
+        }
+
+        protected void btnDarDeBajaMembresia_Click(object sender, EventArgs e)
+        {
+            int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+            IncripcionNegocio negocio = new IncripcionNegocio();
+            negocio.eliminarUltimaInscripcion(IdSocio);
         }
     }
 }

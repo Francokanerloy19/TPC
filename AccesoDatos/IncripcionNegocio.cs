@@ -16,7 +16,7 @@ namespace AccesoDatos
 
             try
             {
-                accesoDatos.setearConsulta("SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = @id ORDER BY i.IdInscripcion ASC, a.Descripcion ASC;");
+                accesoDatos.setearConsulta("SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = @id ORDER BY i.IdInscripcion DESC, a.Descripcion DESC;");
                 accesoDatos.setearParametros("@id", id);
                 accesoDatos.ejecutarConsulta();
 
@@ -74,6 +74,64 @@ namespace AccesoDatos
             }
         }
 
+
+        public void eliminarUltimaInscripcion(int idSocio)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            int idInscripcion = 0;
+
+            try
+            {
+                // 1️⃣ Buscar la última inscripción
+                datos.setearConsulta("SELECT TOP 1 IdInscripcion FROM Inscripcion WHERE IdSocio = @id ORDER BY IdInscripcion DESC");
+                datos.setearParametros("@id", idSocio);
+                datos.ejecutarConsulta();
+
+                if (datos.Lector.Read())
+                {
+                    idInscripcion = (int)datos.Lector["IdInscripcion"];
+                }
+                datos.cerrarConexion(); // cierro antes de seguir
+            }
+            catch (Exception ex)
+            {
+                datos.cerrarConexion();
+                throw ex;
+            }
+
+            // Si no hay inscripción, salgo
+            if (idInscripcion == 0)
+                return;
+
+            try
+            {
+                // 2️⃣ Eliminar pagos
+                datos = new AccesoDatos();
+                datos.setearConsulta("DELETE FROM Pago WHERE IdInscripcion = @idInscripcion");
+                datos.setearParametros("@idInscripcion", idInscripcion);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+
+                // 3️⃣ Eliminar actividades de esa inscripción
+                datos = new AccesoDatos();
+                datos.setearConsulta("DELETE FROM InscripcionActividad WHERE IdInscripcion = @idInscripcion");
+                datos.setearParametros("@idInscripcion", idInscripcion);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+
+                // 4️⃣ Eliminar la inscripción
+                datos = new AccesoDatos();
+                datos.setearConsulta("DELETE FROM Inscripcion WHERE IdInscripcion = @idInscripcion");
+                datos.setearParametros("@idInscripcion", idInscripcion);
+                datos.ejecutarAccion();
+                datos.cerrarConexion();
+            }
+            catch (Exception ex)
+            {
+                datos.cerrarConexion();
+                throw ex;
+            }
+        }
 
 
     }

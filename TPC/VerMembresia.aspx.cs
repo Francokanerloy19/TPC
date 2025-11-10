@@ -22,13 +22,17 @@ namespace TPC
         private void CargarSocios()
         {
             int id = int.Parse(Session["IdSocioSeleccionado"].ToString());
-
-            IncripcionNegocio negocio = new IncripcionNegocio();
-            Inscripción socio = negocio.filtrarPorID(id);
-            lblMembresia.Text = socio.membresia.Nombre.ToString();
-            lblActividad.Text = socio.actividadExtra.NombreActividad.ToString();
-            lblDescripcion.Text = socio.actividadExtra.Descripción.ToString();
-
+            if (id != 0)
+            {
+                IncripcionNegocio negocio = new IncripcionNegocio();
+                Inscripción socio = negocio.filtrarPorID(id);
+                if (socio != null)
+                {
+                    lblMembresia.Text = socio.membresia.Nombre.ToString();
+                    lblActividad.Text = socio.actividadExtra.NombreActividad.ToString();
+                    lblDescripcion.Text = socio.actividadExtra.Descripción.ToString();
+                }
+            }
 
         }
 
