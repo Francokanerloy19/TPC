@@ -31,6 +31,8 @@ namespace TPC
                     lblMembresia.Text = socio.membresia.Nombre.ToString();
                     lblActividad.Text = socio.actividadExtra.NombreActividad.ToString();
                     lblDescripcion.Text = socio.actividadExtra.Descripción.ToString();
+                    lblFvencimiento.Text = socio.FechaVencimiento.ToString("dd/MM/yyyy");
+                    lblFpago.Text = socio.FechaInscripcion.ToString("dd/MM/yyyy");
                 }
             }
 

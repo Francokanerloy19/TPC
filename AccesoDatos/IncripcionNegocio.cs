@@ -16,14 +16,15 @@ namespace AccesoDatos
 
             try
             {
-                accesoDatos.setearConsulta("SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = @id ORDER BY i.IdInscripcion DESC, a.Descripcion DESC;");
+                accesoDatos.setearConsulta("SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion, i.FechaInscripcion, i.FechaVencimiento FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = @id ORDER BY i.IdInscripcion DESC, a.Descripcion DESC;");
                 accesoDatos.setearParametros("@id", id);
                 accesoDatos.ejecutarConsulta();
 
                 while (accesoDatos.Lector.Read())
                 {
                     Inscripción socio = new Inscripción();
-
+                    socio.FechaInscripcion = (DateTime)accesoDatos.Lector["FechaInscripcion"];
+                    socio.FechaVencimiento = (DateTime)accesoDatos.Lector["FechaVencimiento"];
                     socio.membresia = new Membresia();
                     socio.membresia.Nombre = (string)accesoDatos.Lector["NombreMembresia"];
                     socio.actividadExtra = new ActividadExtra();
