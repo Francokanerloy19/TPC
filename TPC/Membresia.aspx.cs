@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccesoDatos;
+using Dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,35 @@ namespace TPC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            cargarMembresia();
+            cargarActividades();
+        }
+        private void cargarMembresia()
+        {
+            MembresiaNegocio negocio = new MembresiaNegocio();
+            List< Dominio.Membresia > listaMembresias = negocio.Listar();
 
+            Dominio.Membresia m = listaMembresias[0]; // toma la primera membresía de la lista
+
+            lblMembresia.Text = m.Nombre;
+            lblDuracion.Text = m.DuracionDias.ToString();
+            lblMonto.Text = m.PrecioBase.ToString("0.00");
+
+        }
+        private void cargarActividades()
+        {
+            gvActividadExtra.DataBind();
+
+            ActividadExtraNegocio negocio = new ActividadExtraNegocio();
+            List<Dominio.ActividadExtra> actividadExtra = negocio.Listar();
+            gvActividadExtra.DataSource = actividadExtra;
+            gvActividadExtra.DataBind();
+
+        }
+
+        protected void btnVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Inicio.aspx",false);
         }
     }
 }

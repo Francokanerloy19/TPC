@@ -105,21 +105,21 @@ namespace AccesoDatos
 
             try
             {
-                // 2️⃣ Eliminar pagos
+                //  Eliminar pagos
                 datos = new AccesoDatos();
                 datos.setearConsulta("DELETE FROM Pago WHERE IdInscripcion = @idInscripcion");
                 datos.setearParametros("@idInscripcion", idInscripcion);
                 datos.ejecutarAccion();
                 datos.cerrarConexion();
 
-                // 3️⃣ Eliminar actividades de esa inscripción
+                //  Eliminar actividades de esa inscripción
                 datos = new AccesoDatos();
                 datos.setearConsulta("DELETE FROM InscripcionActividad WHERE IdInscripcion = @idInscripcion");
                 datos.setearParametros("@idInscripcion", idInscripcion);
                 datos.ejecutarAccion();
                 datos.cerrarConexion();
 
-                // 4️⃣ Eliminar la inscripción
+                //  Eliminar la inscripción
                 datos = new AccesoDatos();
                 datos.setearConsulta("DELETE FROM Inscripcion WHERE IdInscripcion = @idInscripcion");
                 datos.setearParametros("@idInscripcion", idInscripcion);

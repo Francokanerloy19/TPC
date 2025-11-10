@@ -68,7 +68,7 @@ namespace TPC
             PagoNegocio pagoNegocio = new PagoNegocio();
             string metodo = "Transferencia";
             pagoNegocio.RegistrarPago(idInscripcion, idSocio, precioFinal, metodo);
-            //Reactivar socio falta
+            
             SocioNegocio socioNegocio = new SocioNegocio();
             int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
             socioNegocio.baja(IdSocio, true);
