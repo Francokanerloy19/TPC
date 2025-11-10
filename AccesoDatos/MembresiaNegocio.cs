@@ -45,5 +45,48 @@ namespace AccesoDatos
             }
             return Lista;
         }
+
+        public List<Membresia> filtrarPorID(int idMembresia, int idActiExtra )
+        {
+            List<Membresia> Lista = new List<Membresia>();
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("SELECT  M.Nombre AS NombreMembresia, M.PrecioBase, A.NombreActividad, A.PrecioExtra FROM Membresia M, ActividadExtra A WHERE M.IdMembresia = @idMembresia  AND A.IdActividad = @idActividad;");
+                accesoDatos.setearParametros("@idMembresia", idMembresia);
+                accesoDatos.setearParametros("@idActividad", idActiExtra);
+                accesoDatos.ejecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Membresia aux = new Membresia();
+
+                    aux.Nombre = (string)accesoDatos.Lector["NombreMembresia"];
+                    aux.PrecioBase = (decimal)accesoDatos.Lector["PrecioBase"];
+
+                    aux.actividadExtra = new ActividadExtra();
+                    aux.actividadExtra.NombreActividad = (string)accesoDatos.Lector["NombreActividad"];
+                    aux.actividadExtra.PrecioExtra = (decimal)accesoDatos.Lector["PrecioExtra"];
+
+                    Lista.Add(aux);
+                    
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+            return Lista;
+        }
+
+
     }
 }

@@ -43,5 +43,31 @@ namespace AccesoDatos
             }
             return Lista;
         }
+
+        public void RegistrarInscripcionActividad(int IdInscripcion, int IdActividad, decimal PrecioFinal)
+        {
+            AccesoDatos negocio = new AccesoDatos();
+            try
+            {
+                negocio.setearConsulta("INSERT INTO InscripcionActividad (IdInscripcion, IdActividad, PrecioFinal) " + "VALUES(@idInscripcion, @IdActividad, @PrecioFinal)");
+
+                negocio.setearParametros("@idInscripcion", IdInscripcion);
+                negocio.setearParametros("@IdActividad", IdActividad);
+                negocio.setearParametros("@PrecioFinal", PrecioFinal);
+                negocio.ejecutarConsulta();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                negocio.cerrarConexion();
+            }
+        }
+
     }
 }

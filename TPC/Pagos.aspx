@@ -52,7 +52,7 @@
             </div>
             <div class="text-center">
                 <asp:Button Text="Continuar" ID="btnContinuar" runat="server" CssClass="btn btn-success me-2"  OnClick="btnContinuar_Click"/>
-                <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger" />
+                <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger" OnClick="btnCancelar_Click"/>
             </div>
 
 

@@ -168,16 +168,12 @@ select  DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono  from Socio w
 select * from Socio
 
 -- Historial de pago
-SELECT 
-    s.Nombre + ' ' + s.Apellido AS Socio,
-    m.Nombre AS Membresia,
-    p.FechaPago,
-    p.Monto,
-    p.MetodoPago
-FROM Pago p
-INNER JOIN Socio s ON p.IdSocio = s.IdSocio
-INNER JOIN Inscripcion i ON p.IdInscripcion = i.IdInscripcion
-INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia;
+SELECT s.Nombre , s.Apellido,  m.Nombre AS Membresia, p.FechaPago, p.Monto, p.MetodoPago FROM Pago p INNER JOIN Socio s ON p.IdSocio = s.IdSocio INNER JOIN Inscripcion i ON p.IdInscripcion = i.IdInscripcion INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia;
+
+-- Historial pago de un socio
+SELECT s.Nombre , s.Apellido,  m.Nombre AS Membresia, p.FechaPago, p.Monto, p.MetodoPago FROM Pago p INNER JOIN Socio s ON p.IdSocio = s.IdSocio INNER JOIN Inscripcion i ON p.IdInscripcion = i.IdInscripcion INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia WHERE S.IdSocio = @id;
+
+
 
 SELECT s.Nombre + ' ' + s.Apellido AS Socio,m.Nombre AS Membresia, a.NombreActividad AS ActividadExtra, p.FechaPago, p.Monto, p.MetodoPago FROM Pago p INNER JOIN Socio s ON p.IdSocio = s.IdSocio INNER JOIN Inscripcion i ON p.IdInscripcion = i.IdInscripcion INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad ORDER BY s.Nombre, p.FechaPago;
 
@@ -241,7 +237,7 @@ SELECT
 FROM Membresia M, ActividadExtra A
 WHERE M.IdMembresia = @idMembresia
   AND A.IdActividad = @idActividad;
-
+ 
 
 SELECT 
     i.IdInscripcion,

@@ -47,5 +47,34 @@ namespace AccesoDatos
             }
             return null;
         }
+
+        public int RegistrarInscripcion(int idSocio, int idMembresia)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("INSERT INTO Inscripcion (IdSocio, IdMembresia, FechaInscripcion, FechaVencimiento, Estado) " + "OUTPUT INSERTED.IdInscripcion " + "VALUES (@idSocio, @idMembresia, @fechaInscripcion, @fechaVencimiento, @estado)");
+
+                datos.setearParametros("@idSocio", idSocio);
+                datos.setearParametros("@idMembresia", idMembresia);
+                datos.setearParametros("@fechaInscripcion", DateTime.Now);
+                datos.setearParametros("@fechaVencimiento", DateTime.Now.AddDays(30));
+                datos.setearParametros("@estado", 1);
+
+                int idGenerado = (int)datos.ejecutarEscalar(); 
+                return idGenerado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
+
     }
 }

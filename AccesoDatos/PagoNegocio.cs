@@ -46,5 +46,35 @@ namespace AccesoDatos
             }
             return Lista;
         }
+
+        public void RegistrarPago(int IdInscripcion, int IdSocio, decimal PrecioFinal,string metodo)
+        {
+            AccesoDatos negocio = new AccesoDatos();
+            try
+            {
+                negocio.setearConsulta("INSERT INTO Pago (IdSocio, IdInscripcion, FechaPago, Monto, MetodoPago) " + "VALUES(@idSocio, @idInscripcion,@FechaPago,@Monto, @MetodoPago)");
+
+                negocio.setearParametros("@idSocio", IdSocio);
+                negocio.setearParametros("@idInscripcion", IdInscripcion);
+                negocio.setearParametros("@FechaPago", DateTime.Now);
+                negocio.setearParametros("@Monto", PrecioFinal);
+                negocio.setearParametros("@MetodoPago", metodo);
+                negocio.ejecutarConsulta();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                negocio.cerrarConexion();
+            }
+        }
+
+
     }
 }
+

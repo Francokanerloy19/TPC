@@ -82,9 +82,19 @@ namespace TPC
         protected void btnContinuar_Click(object sender, EventArgs e)
         {
             if (Session["membresiaSeleccionada"] != null && Session["actividadExtraSeleccionada"] != null)
-                lbl.Text = "Membresía seleccionada: " + Session["membresiaSeleccionada"].ToString() + " " + "Actividad extra seleccionada: " + Session["actividadExtraSeleccionada"].ToString() + " "+ int.Parse(Session["IdSocioSeleccionado"].ToString());
+            {
+               
+                lbl.Text = "Membresía seleccionada: " + Session["membresiaSeleccionada"].ToString() + " " + "Actividad extra seleccionada: " + Session["actividadExtraSeleccionada"].ToString() + " " + int.Parse(Session["IdSocioSeleccionado"].ToString());
+                
+                Response.Redirect("ConfirmarPago.aspx", false);
+            }
             else
                 lbl.Text = "No se seleccionó ninguna membresía.";
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Gestion.aspx", false);
         }
     }
 }

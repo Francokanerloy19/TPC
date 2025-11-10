@@ -12,7 +12,7 @@ namespace Dominio
         public string Nombre { get; set; }
         public int DuracionDias { get; set; }
         public decimal PrecioBase { get; set; }
-        
 
+        public ActividadExtra actividadExtra { get; set; }
     }
 }
