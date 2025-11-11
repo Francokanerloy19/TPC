@@ -102,6 +102,11 @@ namespace TPC
             int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
             PagoNegocio pagoNegocio = new PagoNegocio();
             List<Pago> Listapago = pagoNegocio.Listar(IdSocio);
+            if (Listapago == null || Listapago.Count == 0)
+            {
+                lblAlerta.Text = "El socio no tiene pagos registrados.";
+                return;
+            }
             Pago pago = Listapago[Listapago.Count - 1];
             if(pago.FechaPago.Month == DateTime.Now.Month && pago.FechaPago.Year == DateTime.Now.Year)
             {

@@ -40,7 +40,7 @@
                         <h6 class="text-danger"><i class="bi bi-exclamation-circle"></i>Alta Prioridad</h6>
                         <asp:Label ID="mbinactivas" runat="server" ForeColor="White" Font-Size="XX-Large" />
                         <p class="text-secondary">Membresías inactivas.</p>
-                        <asp:Button Text="Resolver Ahora" class="btn btn-custom btn-sm" runat="server" />
+                        <asp:Button ID="btnActualizar" Text="Actualizar" class="btn btn-custom btn-sm" runat="server" OnClick="btnActualizar_Click"/>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@
                 <div class="col-6">
                     <div class="card bg-dark p-3">
                         <i class="bi bi-calendar-x fs-4  text-white"></i>
-                        
+                        <asp:Label ID="lblInactivos" runat="server"  ForeColor="White" Font-Size="XX-Large"/>
                         <p class="text-secondary mb-0">Socio inactivos</p>
                     </div>
                 </div>

@@ -274,10 +274,7 @@ SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion, i.FechaI
 
 
 -- 2️⃣ Buscar la última inscripción del socio
-SELECT TOP 1  IdInscripcion = 12
-FROM Inscripcion
-WHERE IdSocio = 6
-ORDER BY IdInscripcion DESC;
+SELECT TOP 1  IdInscripcion FROM Inscripcion WHERE IdSocio = @IdSocio ORDER BY IdInscripcion DESC;
 
 -- 3️⃣ Borrar primero los pagos asociados a esa inscripción
 DELETE FROM Pago
@@ -307,3 +304,14 @@ INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia
 LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion
 LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad
 WHERE i.IdSocio = 1;
+
+
+--Modificar fechas de la inscripcion
+Update Inscripcion SET FechaInscripcion = '2025-11-20', FechaVencimiento = '2025-11-12' WHERE IdInscripcion = 1010 AND IdSocio = 8;
+
+SELECT TOP 1 IdInscripcion FROM Inscripcion WHERE IdSocio = 8  ORDER BY IdInscripcion DESC;
+
+select * from Pago 
+UPDATE Pago
+SET FechaPago = '2025-10-11'
+WHERE IdPago = 1012;

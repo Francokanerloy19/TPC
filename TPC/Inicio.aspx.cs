@@ -14,19 +14,20 @@ namespace TPC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+             
             if (!IsPostBack)
             {
                 CargarSociosPorVencerCorreo();
-                //cargarinscipcionesvencidas();
                 cargarinscipcionesPorVencer();
 
-                //cargarSocioActivos();
+
+                cargarSocioActivos();
                 //cargarinscipcionesTresdiasPorVencer();
                 //cargarinscipcionesTresdiasPorVencer();
                 //cargarinscipcionesTresdiasPorVencer();
                 //MVencer.Text = "234";
-                SociosActivos.Text = "2";
-                mbinactivas.Text = "1";
+                
+                
             }
 
         }
@@ -54,9 +55,13 @@ namespace TPC
             MVencer.Text = cantidad.ToString(); // Mostrás la cantidad en tu Label
 
         }
+         private void cargarSocioActivos()
+         {
+            SocioNegocio negocioNeg = new SocioNegocio();
+            SociosActivos.Text = negocioNeg.contarSocios(true).ToString();
+        }
 
-
-     protected void gvSociosPorVencer_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
+        protected void gvSociosPorVencer_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Contactar")
             {
@@ -69,6 +74,15 @@ namespace TPC
         protected void btnMVencer_Click(object sender, EventArgs e)
         {
             Response.Redirect("ListadoSociosPorVencer.aspx", false);
+        }
+
+        protected void btnActualizar_Click(object sender, EventArgs e)
+        {
+            SocioNegocio negocioNeg = new SocioNegocio();
+
+            negocioNeg.DarDeBajaSociosVencidos();
+            mbinactivas.Text = negocioNeg.contarSocios(false).ToString();
+            lblInactivos.Text = negocioNeg.contarSocios(false).ToString();
         }
     }
 
