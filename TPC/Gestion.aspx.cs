@@ -107,6 +107,9 @@ namespace TPC
             {
                 IncripcionNegocio negocio = new IncripcionNegocio();
                 negocio.eliminarUltimaInscripcion(IdSocio);
+                SocioNegocio socioNegocio = new SocioNegocio();
+                socioNegocio.baja(IdSocio, false);
+                Response.Redirect("ListadoSocio.aspx", false);
             }
             else
             {
