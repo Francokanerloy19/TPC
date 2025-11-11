@@ -22,8 +22,7 @@ namespace TPC
         private void CargarSocios()
         {
             int id = int.Parse(Session["IdSocioSeleccionado"].ToString());
-            if (id != 0)
-            {
+            
                 IncripcionNegocio negocio = new IncripcionNegocio();
                 Inscripción socio = negocio.filtrarPorID(id);
                 if (socio != null)
@@ -34,7 +33,7 @@ namespace TPC
                     lblFvencimiento.Text = socio.FechaVencimiento.ToString("dd/MM/yyyy");
                     lblFpago.Text = socio.FechaInscripcion.ToString("dd/MM/yyyy");
                 }
-            }
+            
 
         }
 

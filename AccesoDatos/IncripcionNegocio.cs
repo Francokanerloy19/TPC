@@ -134,6 +134,48 @@ namespace AccesoDatos
             }
         }
 
+        public void modificarInscripcion( Inscripción inscripción)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("Update Inscripcion SET FechaInscripcion = @FechaInscripcion, FechaVencimiento = @FechaVencimiento WHERE IdInscripcion = @IdInscripcion AND IdSocio = @IdSocio;");
+
+                datos.setearParametros("@FechaInscripcion", inscripción.FechaInscripcion);
+                datos.setearParametros("@FechaVencimiento", inscripción.FechaVencimiento);
+                datos.setearParametros("@IdInscripcion", inscripción.IdInscripcion);
+                datos.setearParametros("@IdSocio", inscripción.IdSocio);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+        public int ultimaInscripcion(int idSocio)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT TOP 1 IdInscripcion FROM Inscripcion WHERE IdSocio = @IdSocio ORDER BY IdInscripcion DESC;");
+                datos.setearParametros("@IdSocio", idSocio);
+                
+                return Convert.ToInt32(datos.ejecutarEscalar());
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
 
     }
 }

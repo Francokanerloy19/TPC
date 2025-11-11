@@ -102,5 +102,10 @@ namespace TPC
             IncripcionNegocio negocio = new IncripcionNegocio();
             negocio.eliminarUltimaInscripcion(IdSocio);
         }
+
+        protected void btnModificarMembresia_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ModificarMembresia.aspx", false);
+        }
     }
 }

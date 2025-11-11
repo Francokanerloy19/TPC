@@ -1,4 +1,4 @@
--- Crear la base de datos
+Ôªø-- Crear la base de datos
 --CREATE DATABASE Gimnasio_DB;
 --GO
 
@@ -94,14 +94,14 @@
 ---- SOCIOS
 ---- ==========================
 --INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Direccion, Barrio, Estado) VALUES
---('40123456', 'Juan', 'PÈrez', 'juanperez@gmail.com', '1165891234', 'Av. Corrientes 3200', 'Villa Crespo', 1),
---('40234567', 'LucÌa', 'GÛmez', 'luciagomez@gmail.com', '1145678912', 'Calle Malabia 1500', 'Palermo', 1),
---('40345678', 'MartÌn', 'LÛpez', 'martinlopez@gmail.com', '1134567891', 'Av. San MartÌn 4500', 'Chacarita', 1);
+--('40123456', 'Juan', 'P√©rez', 'juanperez@gmail.com', '1165891234', 'Av. Corrientes 3200', 'Villa Crespo', 1),
+--('40234567', 'Luc√≠a', 'G√≥mez', 'luciagomez@gmail.com', '1145678912', 'Calle Malabia 1500', 'Palermo', 1),
+--('40345678', 'Mart√≠n', 'L√≥pez', 'martinlopez@gmail.com', '1134567891', 'Av. San Mart√≠n 4500', 'Chacarita', 1);
 --GO
 
 
 ---- ==========================
----- MEMBRESÕA (˙nica)
+---- MEMBRES√çA (√∫nica)
 ---- ==========================
 --INSERT INTO Membresia (Nombre, DuracionDias, PrecioBase) VALUES
 --('Pase libre', 30, 36000.00);
@@ -112,15 +112,15 @@
 ---- ==========================
 --INSERT INTO ActividadExtra (NombreActividad, PrecioExtra, Descripcion) VALUES
 --('Sin actividad extra', 0.00, 'Pase libre'),
---('GAP', 2500.00, 'Entrenamiento enfocado en gl˙teos, abdominales y piernas'),
---('Karate', 3500.00, 'Clase de artes marciales con tÈcnicas de defensa personal'),
---('Yoga', 2000.00, 'Clase de estiramiento, equilibrio y respiraciÛn');
+--('GAP', 2500.00, 'Entrenamiento enfocado en gl√∫teos, abdominales y piernas'),
+--('Karate', 3500.00, 'Clase de artes marciales con t√©cnicas de defensa personal'),
+--('Yoga', 2000.00, 'Clase de estiramiento, equilibrio y respiraci√≥n');
 --GO
 
 ---- ==========================
 ---- INSCRIPCIONES
 ---- ==========================
----- Todos los socios tienen la misma membresÌa (IdMembresia = 1)
+---- Todos los socios tienen la misma membres√≠a (IdMembresia = 1)
 --INSERT INTO Inscripcion (IdSocio, IdMembresia, FechaInscripcion, FechaVencimiento, Estado) VALUES
 --(1, 1, '2025-11-01', '2025-11-30', 1), 
 --(2, 1, '2025-11-03', '2025-12-02', 1),
@@ -128,18 +128,18 @@
 --GO
 
 ---- ==========================
----- INSCRIPCI”N - ACTIVIDAD (tabla puente)
+---- INSCRIPCI√ìN - ACTIVIDAD (tabla puente)
 ---- ==========================
 ---- Juan (IdInscripcion 1) toma Zumba y GAP
 --INSERT INTO InscripcionActividad (IdInscripcion, IdActividad, PrecioFinal) VALUES
 --(1, 1, 3000.00),  -- Zumba
 --(1, 2, 2500.00);  -- GAP
 
----- LucÌa (IdInscripcion 2) toma solo Yoga
+---- Luc√≠a (IdInscripcion 2) toma solo Yoga
 --INSERT INTO InscripcionActividad (IdInscripcion, IdActividad, PrecioFinal) VALUES
 --(2, 4, 2000.00);  -- Yoga
 
----- MartÌn (IdInscripcion 3) toma Karate
+---- Mart√≠n (IdInscripcion 3) toma Karate
 --INSERT INTO InscripcionActividad (IdInscripcion, IdActividad, PrecioFinal) VALUES
 --(3, 3, 3500.00);  -- Karate
 --GO
@@ -147,18 +147,18 @@
 ---- ==========================
 ---- PAGOS
 ---- ==========================
----- Juan paga la membresÌa el 1/11 y luego agrega GAP el 15/11
+---- Juan paga la membres√≠a el 1/11 y luego agrega GAP el 15/11
 --INSERT INTO Pago (IdSocio, IdInscripcion, FechaPago, Monto, MetodoPago) VALUES
---(1, 1, '2025-11-01', 12000.00, 'Efectivo'),   -- Pago base membresÌa
+--(1, 1, '2025-11-01', 12000.00, 'Efectivo'),   -- Pago base membres√≠a
 --(1, 1, '2025-11-15', 2500.00, 'Efectivo');    -- Pago por actividad GAP
 
----- LucÌa paga todo junto (membresÌa + Yoga)
+---- Luc√≠a paga todo junto (membres√≠a + Yoga)
 --INSERT INTO Pago (IdSocio, IdInscripcion, FechaPago, Monto, MetodoPago) VALUES
 --(2, 2, '2025-11-03', 14000.00, 'Transferencia'); -- 12000 + 2000
 
----- MartÌn paga su membresÌa + Karate
+---- Mart√≠n paga su membres√≠a + Karate
 --INSERT INTO Pago (IdSocio, IdInscripcion, FechaPago, Monto, MetodoPago) VALUES
---(3, 3, '2025-11-05', 15500.00, 'DÈbito'); -- 12000 + 3500
+--(3, 3, '2025-11-05', 15500.00, 'D√©bito'); -- 12000 + 3500
 --GO
 
 select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio 
@@ -210,7 +210,7 @@ INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Direccion, Barrio, E
 
 
 ---- ==========================
----- MEMBRESÕA (˙nica)
+---- MEMBRES√çA (√∫nica)
 ---- ==========================
 --INSERT INTO Membresia (Nombre, DuracionDias, PrecioBase) VALUES
 --('Pase libre', 30, 36000.00);
@@ -221,10 +221,11 @@ select IdMembresia ,Nombre, DuracionDias, PrecioBase from Membresia
 ---- ==========================
 --INSERT INTO ActividadExtra (NombreActividad, PrecioExtra, Descripcion) VALUES
 --('Sin actividad extra', 0.00, 'Pase libre'),
---('GAP', 2500.00, 'Entrenamiento enfocado en gl˙teos, abdominales y piernas'),
---('Karate', 3500.00, 'Clase de artes marciales con tÈcnicas de defensa personal'),
---('Yoga', 2000.00, 'Clase de estiramiento, equilibrio y respiraciÛn');
+--('GAP', 2500.00, 'Entrenamiento enfocado en gl√∫teos, abdominales y piernas'),
+--('Karate', 3500.00, 'Clase de artes marciales con t√©cnicas de defensa personal'),
+--('Yoga', 2000.00, 'Clase de estiramiento, equilibrio y respiraci√≥n');
 --GO
+select IdActividad ,NombreActividad, PrecioExtra, Descripcion from ActividadExtra
 select IdActividad ,NombreActividad, PrecioExtra, Descripcion from ActividadExtra
 
 --Consuta para mostrar el pago preciomembrecia y precioExtra
@@ -269,10 +270,40 @@ LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad
 where s.IdSocio = 1;
 
 SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = 1 ORDER BY i.IdInscripcion ASC, a.Descripcion ASC;
-SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = 6 ORDER BY i.IdInscripcion DESC, a.Descripcion DESC;
+SELECT  m.Nombre AS NombreMembresia, a.NombreActividad,  a.Descripcion, i.FechaInscripcion, i.FechaVencimiento FROM Inscripcion i INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad where i.IdSocio = 6 ORDER BY i.IdInscripcion DESC, a.Descripcion DESC;
 
 
-SELECT i.IdInscripcion, i.IdSocio, s.DNI, i.IdMembresia, i.FechaInscripcion
+-- 2Ô∏è‚É£ Buscar la √∫ltima inscripci√≥n del socio
+SELECT TOP 1  IdInscripcion = 12
+FROM Inscripcion
+WHERE IdSocio = 6
+ORDER BY IdInscripcion DESC;
+
+-- 3Ô∏è‚É£ Borrar primero los pagos asociados a esa inscripci√≥n
+DELETE FROM Pago
+WHERE IdInscripcion = 12;
+
+-- 4Ô∏è‚É£ Luego borrar las actividades extras asociadas
+DELETE FROM InscripcionActividad
+WHERE IdInscripcion = 12;
+
+-- 5Ô∏è‚É£ Por √∫ltimo, borrar la inscripci√≥n misma
+DELETE FROM Inscripcion
+WHERE IdInscripcion = 12;
+
+
+SELECT 
+    m.Nombre AS NombreMembresia,
+    m.PrecioBase,
+    a.NombreActividad,
+    a.Descripcion,
+    a.PrecioExtra,
+    ia.PrecioFinal,
+    i.FechaInscripcion,
+    i.FechaVencimiento,
+    i.Estado
 FROM Inscripcion i
-INNER JOIN Socio s ON i.IdSocio = s.IdSocio
-WHERE s.DNI = 42661010;
+INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia
+LEFT JOIN InscripcionActividad ia ON i.IdInscripcion = ia.IdInscripcion
+LEFT JOIN ActividadExtra a ON ia.IdActividad = a.IdActividad
+WHERE i.IdSocio = 1;

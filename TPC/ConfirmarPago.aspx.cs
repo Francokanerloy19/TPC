@@ -61,7 +61,7 @@ namespace TPC
 
             IncripcionNegocio negocio = new IncripcionNegocio();
             int idInscripcion = negocio.RegistrarInscripcion(idSocio, idMembresia);
-
+            
             ActividadExtraNegocio extraNegocio = new ActividadExtraNegocio();
             extraNegocio.RegistrarInscripcionActividad(idInscripcion, idActividadExtra, precioExtra);
 
