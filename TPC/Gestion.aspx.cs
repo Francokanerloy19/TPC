@@ -98,9 +98,22 @@ namespace TPC
 
         protected void btnDarDeBajaMembresia_Click(object sender, EventArgs e)
         {
+
             int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
-            IncripcionNegocio negocio = new IncripcionNegocio();
-            negocio.eliminarUltimaInscripcion(IdSocio);
+            PagoNegocio pagoNegocio = new PagoNegocio();
+            List<Pago> Listapago = pagoNegocio.Listar(IdSocio);
+            Pago pago = Listapago[Listapago.Count - 1];
+            if(pago.FechaPago.Month == DateTime.Now.Month && pago.FechaPago.Year == DateTime.Now.Year)
+            {
+                IncripcionNegocio negocio = new IncripcionNegocio();
+                negocio.eliminarUltimaInscripcion(IdSocio);
+            }
+            else
+            {
+                lblAlerta.Text = "No hay Pagos registrado este mes";
+            }
+
+                
         }
 
         protected void btnModificarMembresia_Click(object sender, EventArgs e)
