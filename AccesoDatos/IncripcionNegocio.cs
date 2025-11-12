@@ -176,6 +176,43 @@ namespace AccesoDatos
                 datos.cerrarConexion();
             }
         }
+        public decimal ingresoDiario(DateTime fecha)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta(@"
+            SELECT SUM(m.PrecioBase + ISNULL(ia.TotalExtras, 0)) AS TotalIngresos 
+            FROM Pago p 
+            INNER JOIN Inscripcion i ON p.IdInscripcion = i.IdInscripcion 
+            INNER JOIN Membresia m ON i.IdMembresia = m.IdMembresia 
+            LEFT JOIN (
+                SELECT IdInscripcion, SUM(PrecioFinal) AS TotalExtras  
+                FROM InscripcionActividad 
+                GROUP BY IdInscripcion
+            ) ia ON i.IdInscripcion = ia.IdInscripcion 
+            WHERE CONVERT(date, p.FechaPago) = CONVERT(date, @FechaPago)
+        ");
+                datos.setearParametros("@FechaPago", fecha);
+
+                object resultado = datos.ejecutarEscalar();
+
+                if (resultado == DBNull.Value || resultado == null)
+                    return 0;
+
+                return Convert.ToDecimal(resultado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
 
     }
 }

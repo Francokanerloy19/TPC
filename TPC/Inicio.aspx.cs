@@ -14,7 +14,7 @@ namespace TPC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-             
+
             if (!IsPostBack)
             {
                 CargarSociosPorVencerCorreo();
@@ -22,12 +22,13 @@ namespace TPC
 
 
                 cargarSocioActivos();
-                //cargarinscipcionesTresdiasPorVencer();
-                //cargarinscipcionesTresdiasPorVencer();
-                //cargarinscipcionesTresdiasPorVencer();
-                //MVencer.Text = "234";
                 
+                //cargarinscipcionesTresdiasPorVencer();
+                //cargarinscipcionesTresdiasPorVencer();
+                //cargarinscipcionesTresdiasPorVencer();
                 
+
+
             }
 
         }
@@ -38,7 +39,7 @@ namespace TPC
             gvSociosPorVencer.DataBind();
             SocioNegocio negocio = new SocioNegocio();
             List<Socio> CargarSociosPorVencerCorreo = negocio.ListarPorVencer(diasAntesVencer);
-          
+
 
             // Cargar datos en el GridView
             gvSociosPorVencer.DataSource = CargarSociosPorVencerCorreo;
@@ -47,7 +48,7 @@ namespace TPC
         private void cargarinscipcionesPorVencer()
         {
             int diasParaVencer = 7;
-       
+
             SocioNegocio negocio = new SocioNegocio();
             List<Socio> listadoSocioPorVencer = negocio.ListarPorVencer(diasParaVencer);
             int cantidad = listadoSocioPorVencer.Count; // Cuento los socios agregados a la lista
@@ -55,11 +56,21 @@ namespace TPC
             MVencer.Text = cantidad.ToString(); // Mostrás la cantidad en tu Label
 
         }
-         private void cargarSocioActivos()
-         {
+        private void cargarSocioActivos()
+        {
             SocioNegocio negocioNeg = new SocioNegocio();
             SociosActivos.Text = negocioNeg.contarSocios(true).ToString();
         }
+        private void cargarIngresos()
+        {
+            IncripcionNegocio negocio = new IncripcionNegocio();
+            DateTime fecha = DateTime.ParseExact(txtDia.Text, "yyyy-MM-dd", null);
+           // DateTime fecha = new DateTime(2025, 11, 11); // 📅 día específico
+            decimal monto = negocio.ingresoDiario(fecha);
+
+            lblIngresos.Text = monto.ToString("C");
+        }
+
 
         protected void gvSociosPorVencer_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
@@ -76,13 +87,20 @@ namespace TPC
             Response.Redirect("ListadoSociosPorVencer.aspx", false);
         }
 
+
+
         protected void btnActualizar_Click(object sender, EventArgs e)
         {
             SocioNegocio negocioNeg = new SocioNegocio();
 
             negocioNeg.DarDeBajaSociosVencidos();
             mbinactivas.Text = negocioNeg.contarSocios(false).ToString();
-            lblInactivos.Text = negocioNeg.contarSocios(false).ToString();
+
+        }
+
+        protected void btnDia_Click(object sender, EventArgs e)
+        {
+            cargarIngresos();
         }
     }
 
