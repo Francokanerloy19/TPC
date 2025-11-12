@@ -23,9 +23,7 @@ namespace TPC
 
                 cargarSocioActivos();
                 
-                //cargarinscipcionesTresdiasPorVencer();
-                //cargarinscipcionesTresdiasPorVencer();
-                //cargarinscipcionesTresdiasPorVencer();
+                cargarNuevosSocios();
                 
 
 
@@ -64,8 +62,18 @@ namespace TPC
         private void cargarIngresos()
         {
             IncripcionNegocio negocio = new IncripcionNegocio();
-            DateTime fecha = DateTime.ParseExact(txtDia.Text, "yyyy-MM-dd", null);
-           // DateTime fecha = new DateTime(2025, 11, 11); // 📅 día específico
+            DateTime fecha; 
+
+            if (!string.IsNullOrWhiteSpace(txtDia.Text))
+            {
+                fecha = DateTime.ParseExact(txtDia.Text, "yyyy-MM-dd", null);
+            }
+            else
+            {
+                lblAlertaIngreso.Text = "Ingrese una fecha válida";
+                return; 
+            }
+
             decimal monto = negocio.ingresoDiario(fecha);
 
             lblIngresos.Text = monto.ToString("C");
@@ -102,6 +110,15 @@ namespace TPC
         {
             cargarIngresos();
         }
+
+
+        private void cargarNuevosSocios()
+        {
+            SocioNegocio negocioNeg = new SocioNegocio();
+            int nuevos = negocioNeg.contarNuevosSocios();
+            lblNuevosSocios.Text = nuevos.ToString();
+        }
+
     }
 
 

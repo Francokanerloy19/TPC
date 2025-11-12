@@ -155,9 +155,9 @@ namespace AccesoDatos
         {
             AccesoDatos accesoDatos = new AccesoDatos();
             SocioNegocio socioNegocio = new SocioNegocio();
-            
 
-           
+
+
             try
             {
                 accesoDatos.setearConsulta("SELECT S.IdSocio, I.FechaVencimiento FROM Socio S INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio WHERE S.Estado = 1;");
@@ -171,7 +171,7 @@ namespace AccesoDatos
                     if (fechaVenc < DateTime.Now)
                     {
                         socioNegocio.baja(idSocio, false); //  baja automática
-                        
+
                     }
                 }
             }
@@ -185,12 +185,12 @@ namespace AccesoDatos
                 accesoDatos.cerrarConexion();
             }
 
-          
+
         }
 
         public int contarSocios(bool estado)
         {
-            
+
             AccesoDatos datos = new AccesoDatos();
             int contadorBajas = 0;
             try
@@ -264,7 +264,7 @@ namespace AccesoDatos
 
             try
             {
-                accesoDatos.setearConsulta(" INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Direccion, Barrio, Estado) VALUES (@DNI, @Nombre, @Apellido, @Correo, @Telefono, @Direccion, @Barrio, 1) SELECT SCOPE_IDENTITY()");
+                accesoDatos.setearConsulta(" INSERT INTO Socio (DNI, Nombre, Apellido, Correo, Telefono, Direccion, Barrio, Estado) VALUES (@DNI, @Nombre, @Apellido, @Correo, @Telefono, @Direccion, @Barrio, 0) SELECT SCOPE_IDENTITY()");
 
                 accesoDatos.setearParametros("@Direccion", socio.Direccion);
                 accesoDatos.setearParametros("@Barrio", socio.Barrio);
@@ -289,6 +289,31 @@ namespace AccesoDatos
 
         }
 
+        public int contarNuevosSocios()
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("SELECT COUNT(*) AS CantidadAltas FROM Inscripcion WHERE  MONTH(FechaInscripcion) = MONTH(GETDATE()) AND YEAR(FechaInscripcion) = YEAR(GETDATE());");
+
+                object resultado = accesoDatos.ejecutarEscalar();// Uso un objeto para guardar el resultado ya que no sé qué tipo de dato puede devolver la consulta.
+
+                if (resultado == null || resultado == DBNull.Value)
+                {
+                    return 0;
+                }
+                return Convert.ToInt32(resultado);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
     }
 }
-

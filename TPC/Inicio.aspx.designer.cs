@@ -87,6 +87,24 @@ namespace TPC
         protected global::System.Web.UI.WebControls.Button btnDia;
 
         /// <summary>
+        /// Control lblAlertaIngreso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlertaIngreso;
+
+        /// <summary>
+        /// Control lblNuevosSocios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNuevosSocios;
+
+        /// <summary>
         /// Control gvSociosPorVencer.
         /// </summary>
         /// <remarks>

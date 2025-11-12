@@ -315,3 +315,17 @@ select * from Pago
 UPDATE Pago
 SET FechaPago = '2025-10-11'
 WHERE IdPago = 1012;
+
+SELECT S.IdSocio ,S.Nombre, S.Apellido,S.Correo , I.FechaInscripcion, I.FechaVencimiento, I.Estado FROM Socio S INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio WHERE I.Estado = 1
+
+SELECT S.IdSocio, I.FechaVencimiento FROM Socio S INNER JOIN Inscripcion I ON S.IdSocio = I.IdSocio WHERE S.Estado= 1 ;
+
+SELECT COUNT(*) FROM Socio WHERE Estado = 0;
+
+select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio
+
+
+
+
+
+

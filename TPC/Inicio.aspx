@@ -76,6 +76,7 @@
                         <asp:TextBox runat="server" ID="txtDia" TextMode="Date" CssClass="form-control form-control-sm w-50" />
                         <asp:Button ID="btnDia" Text="Buscar" runat="server" CssClass="btn btn-outline-light btn-sm"  OnClick="btnDia_Click"/>
                     </div>
+                    <asp:Label ID="lblAlertaIngreso" class="text-danger" runat="server" />
                 </div>
             </div>
 
@@ -84,7 +85,7 @@
             <div class="col-6">
                 <div class="card bg-dark p-3">
                     <i class="bi bi-person-plus fs-4  text-white"></i>
-
+                    <asp:Label ID="lblNuevosSocios" runat="server" ForeColor="White" Font-Size="XX-Large" />
                     <!-- Nuevos socios -->
                     <p class="text-secondary mb-0">Nuevos Socios (Mes)</p>
                 </div>
