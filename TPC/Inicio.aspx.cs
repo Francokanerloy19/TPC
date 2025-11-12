@@ -82,11 +82,30 @@ namespace TPC
 
         protected void gvSociosPorVencer_RowCommand(object sender, System.Web.UI.WebControls.GridViewCommandEventArgs e)
         {
+            
+            
             if (e.CommandName == "Contactar")
             {
                 string correo = e.CommandArgument.ToString();
-                // Acá podés implementar el envío de mail, por ejemplo:
-                // EnviarCorreo(correo);
+                string asunto = "Recordatorio: tu inscripción vence en 3 días";
+
+                EmailService emailService = new EmailService();
+               
+                try
+                {
+                    emailService.armarCorreo(correo, asunto);
+                    emailService.enviarEmail();
+
+                    
+                    lblMensaje.Text = "Correo enviado a " + correo;
+                    
+                }
+                catch (Exception ex)
+                {
+
+                    lblMensaje.Text = "Error al enviar correo: " + ex.Message;
+                    lblMensaje.CssClass = "text-danger";
+                }
             }
         }
 

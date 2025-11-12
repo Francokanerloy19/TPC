@@ -95,7 +95,7 @@
         <!-- Membresías por Vencer -->
         <h5>Membresías por Vencer</h5>
         <!-- Apareceran los socios con 3 dias antes del vencimiento a los cuales se los contactaran por correo -->
-        <asp:GridView ID="gvSociosPorVencer" runat="server" AutoGenerateColumns="False" CssClass="table table-dark table-striped table-hover text-center" BorderStyle="None">
+        <asp:GridView ID="gvSociosPorVencer" runat="server" AutoGenerateColumns="False" CssClass="table table-dark table-striped table-hover text-center" BorderStyle="None" OnRowCommand="gvSociosPorVencer_RowCommand">
             <Columns>
                 <asp:BoundField DataField="IdSocio" HeaderText="#" />
                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
@@ -109,6 +109,7 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+        <asp:Label ID="lblMensaje" CssClass="text-success" runat="server" />
     </div>
 
 
