@@ -314,6 +314,50 @@ namespace AccesoDatos
                 accesoDatos.cerrarConexion();
             }
         }
+        public Socio buscarSocioDNI(string dni)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("SELECT IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado FROM Socio WHERE DNI = @dni");
+                accesoDatos.setearParametros("@dni", dni);
+                accesoDatos.ejecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    Socio socio = new Socio();
+
+                    socio.IdSocio = (int)accesoDatos.Lector["IdSocio"];
+                    socio.DNI = (string)accesoDatos.Lector["DNI"];
+                    socio.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    socio.Apellido = (string)accesoDatos.Lector["Apellido"];
+                    socio.Correo = (string)accesoDatos.Lector["Correo"];
+                    socio.Barrio = (string)accesoDatos.Lector["Barrio"];
+                    socio.Direccion = (string)accesoDatos.Lector["Direccion"];
+                    socio.Telefono = (string)accesoDatos.Lector["Telefono"];
+                    socio.Estado = (bool)accesoDatos.Lector["Estado"];
+
+                    return socio;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+            return null;
+        }
+
+
+
+
 
     }
 }

@@ -57,7 +57,22 @@ namespace TPC
             }
         }
 
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            SocioNegocio negocio = new SocioNegocio();
+            Socio socio = negocio.buscarSocioDNI(txtSearch.Text);
 
-
+            if (socio != null)
+            {
+                gvSocios.DataSource = new List<Socio> { socio }; 
+                gvSocios.DataBind();
+            }
+            else
+            {
+                gvSocios.DataSource = null;
+                gvSocios.DataBind();
+                lblErrorSearch.Text = "El cliente no existe";
+            }
+        }
     }
 }

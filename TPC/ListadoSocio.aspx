@@ -21,6 +21,14 @@
     <br />
     <asp:Button ID="btnAgregar" runat="server" Text="Agregar nuevo socio" CssClass="btn btn-custom btn-sm" OnClick="btnAgregar_Click" />
     <br />
+    <br />
+    <div class="d-flex" role="search">
+        <asp:TextBox ID="txtSearch" placeholder="Search" CssClass="form-control me-2 bg-dark text-white border-0"   aria-label="Search" runat="server" />
+        <asp:Button ID="btnSearch" Text="Search" CssClass="btn btn-outline-success" runat="server"  OnClick="btnSearch_Click"/>
+        <br />
+        <br />
+        <asp:Label ID="lblErrorSearch" CssClass=" text-danger" runat="server" />
+      </div>
     <div class="container py-3">
 
 

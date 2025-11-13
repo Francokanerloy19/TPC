@@ -16,6 +16,7 @@
             border: none;
         }
     </style>
+
     <asp:Button ID="volver" runat="server" Text="volver" CssClass="btn btn-outline-danger btn-lg" OnClick="volver_Click" />
 
     <div class="container py-3">
