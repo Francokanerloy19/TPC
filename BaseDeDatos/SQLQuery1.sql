@@ -325,7 +325,7 @@ SELECT COUNT(*) FROM Socio WHERE Estado = 0;
 select IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado from Socio
 
 
-
+SELECT COUNT(*) AS CantidadAltas FROM Inscripcion WHERE  MONTH(FechaInscripcion) = MONTH(GETDATE()) AND YEAR(FechaInscripcion) = YEAR(GETDATE());
 
 
 

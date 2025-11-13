@@ -25,7 +25,7 @@ namespace AccesoDatos
         public void armarCorreo(string correo, string asunto)
         {
             email = new MailMessage();
-            email.From = new MailAddress("francokaner@gmail.com", "Connectis Gym");
+            email.From = new MailAddress("francokaner@gmail.com");
             email.To.Add(correo);
             email.Subject = asunto;
             email.IsBodyHtml = true;

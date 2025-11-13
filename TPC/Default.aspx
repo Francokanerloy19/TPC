@@ -23,7 +23,8 @@
 
 
                     <asp:Button ID="BtnConfirmar" runat="server" Text="Confirmar" CssClass="btn btn-primary mb-3" OnClick="BtnConfirmar_Click" />
-
+                    <br />
+                    <asp:Label ID="lblErrorPass" CssClass="text-danger" runat="server" />
                 </div>
             </div>
         </div>

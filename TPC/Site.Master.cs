@@ -13,5 +13,11 @@ namespace TPC
         {
 
         }
+
+        protected void btnSalir_Click(object sender, EventArgs e)
+        {
+            Session["usuario"] = null;
+            Response.Redirect("Default.aspx",false);
+        }
     }
 }

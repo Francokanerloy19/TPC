@@ -54,6 +54,7 @@
     <Compile Include="MembresiaNegocio.cs" />
     <Compile Include="PagoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioNegocio.cs" />
     <Compile Include="SocioNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
