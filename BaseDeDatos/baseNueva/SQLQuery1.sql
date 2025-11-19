@@ -85,10 +85,25 @@ CREATE TABLE InscripcionActividad (
     CONSTRAINT FK_InscripcionActividad_Actividad FOREIGN KEY (IdActividad) REFERENCES ActividadExtra(IdActividad)
 );
 GO
+
+CREATE TABLE Usuario (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Usuario VARCHAR(50) NOT NULL UNIQUE,
+    Pass VARCHAR(50) NOT NULL,
+    TipoUser INT NOT NULL  -- 1 = Admin, 2 = Empleado, etc.
+);
+GO
+
 -- ==================================================================================================================================
 -- INSERT
 -- ==================================================================================================================================
 
+-- ==========================
+-- Usser
+-- ==========================
+INSERT INTO Usuario (Usuario, Pass, TipoUser)
+VALUES ('admin', 'admin123', 2);
+ select Id, Usuario, Pass, TipoUser FROM Usuario WHERE usuario = @usuario AND Pass = @Pass;
  -- INSERT
 -- ==========================
 -- SOCIOS
@@ -158,3 +173,6 @@ LEFT JOIN (
 WHERE CAST(p.FechaPago AS date) = '2025-11-11'
 
 SELECT FechaPago FROM Pago;
+
+
+SELECT IdSocio, DNI, Nombre, Apellido, Correo, Barrio, Direccion, Telefono, Estado FROM Socio WHERE DNI = 42661098

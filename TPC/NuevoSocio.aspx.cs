@@ -25,21 +25,23 @@ namespace TPC
         {
             Socio socio = new Socio();
 
+            if (!string.IsNullOrWhiteSpace(txtDNI.Text) && !string.IsNullOrWhiteSpace(TextNombre.Text) && !string.IsNullOrWhiteSpace(TxtApellido.Text) && !string.IsNullOrWhiteSpace(validationtxtEmail.Text) && !string.IsNullOrWhiteSpace(txtBarrio.Text) && !string.IsNullOrWhiteSpace(txtDireccion.Text) && !string.IsNullOrWhiteSpace(txtCelular.Text))
+            {
+                socio.DNI = txtDNI.Text;
+                socio.Nombre = TextNombre.Text;
+                socio.Apellido = TxtApellido.Text;
+                socio.Correo = validationtxtEmail.Text;
+                socio.Barrio = txtBarrio.Text;
+                socio.Direccion = txtDireccion.Text;
+                socio.Telefono = txtCelular.Text;
 
-            socio.DNI = txtDNI.Text;
-            socio.Nombre = TextNombre.Text;
-            socio.Apellido = TxtApellido.Text;
-            socio.Correo = validationtxtEmail.Text;
-            socio.Barrio = txtBarrio.Text;
-            socio.Direccion = txtDireccion.Text;
-            socio.Telefono = txtCelular.Text;
-            
+                // validar que el socio no sea null
+                SocioNegocio negocio = new SocioNegocio();
+                int idNuevoSocio = negocio.agregar(socio);
 
-            SocioNegocio negocio = new SocioNegocio();
-            int idNuevoSocio = negocio.agregar(socio);
-
-            Session["IdSocioSeleccionado"] = idNuevoSocio;
-            Response.Redirect("Gestion.aspx", false);
+                Session["IdSocioSeleccionado"] = idNuevoSocio;
+                Response.Redirect("Gestion.aspx", false);
+            }
         }
     }
 }
