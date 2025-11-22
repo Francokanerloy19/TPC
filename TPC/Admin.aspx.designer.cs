@@ -11,34 +11,52 @@ namespace TPC
 {
 
 
-    public partial class Membresia
+    public partial class Admin
     {
 
         /// <summary>
-        /// Control repMembresias.
+        /// Control btnCrearUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repMembresias;
+        protected global::System.Web.UI.WebControls.Button btnCrearUsuario;
 
         /// <summary>
-        /// Control gvActividadExtra.
+        /// Control btnModificarPlan.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvActividadExtra;
+        protected global::System.Web.UI.WebControls.Button btnModificarPlan;
 
         /// <summary>
-        /// Control btnVolver.
+        /// Control btnEliminarPlan.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolver;
+        protected global::System.Web.UI.WebControls.Button btnEliminarPlan;
+
+        /// <summary>
+        /// Control btnAgregarPlan.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAgregarPlan;
+
+        /// <summary>
+        /// Control btnVolverMenu.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnVolverMenu;
     }
 }

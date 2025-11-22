@@ -69,5 +69,31 @@ namespace AccesoDatos
             }
         }
 
+        public void agregar(ActividadExtra actividadExtra)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta(" INSERT INTO ActividadExtra (NombreActividad, PrecioExtra, Descripcion) VALUES(@NombreActividad,@PrecioExtra, @Descripcion);");
+
+                accesoDatos.setearParametros("@NombreActividad", actividadExtra.NombreActividad);
+                accesoDatos.setearParametros("@PrecioExtra", actividadExtra.PrecioExtra);
+                accesoDatos.setearParametros("@Descripcion", actividadExtra.Descripción);
+                accesoDatos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
+
     }
 }

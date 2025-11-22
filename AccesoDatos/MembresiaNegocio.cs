@@ -87,6 +87,32 @@ namespace AccesoDatos
             return Lista;
         }
 
+        public void agregar(Membresia membresia)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta(" INSERT INTO Membresia (Nombre, DuracionDias, PrecioBase) VALUES (@Nombre, @DuracionDias, @PrecioBase);");
+
+                accesoDatos.setearParametros("@Nombre", membresia.Nombre);
+                accesoDatos.setearParametros("@DuracionDias", membresia.DuracionDias);
+                accesoDatos.setearParametros("@PrecioBase", membresia.PrecioBase);
+                accesoDatos.ejecutarAccion(); 
+               
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
+
 
     }
 }

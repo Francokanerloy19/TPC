@@ -24,14 +24,10 @@ namespace TPC
         private void cargarMembresia()
         {
             MembresiaNegocio negocio = new MembresiaNegocio();
-            List< Dominio.Membresia > listaMembresias = negocio.Listar();
+            List<Dominio.Membresia> listaMembresias = negocio.Listar();
 
-            Dominio.Membresia m = listaMembresias[0]; // toma la primera membresía de la lista
-
-            lblMembresia.Text = m.Nombre;
-            lblDuracion.Text = m.DuracionDias.ToString();
-            lblMonto.Text = m.PrecioBase.ToString("0.00");
-
+            repMembresias.DataSource = listaMembresias;
+            repMembresias.DataBind();
         }
         private void cargarActividades()
         {
@@ -46,7 +42,7 @@ namespace TPC
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Inicio.aspx",false);
+            Response.Redirect("Inicio.aspx", false);
         }
     }
 }
