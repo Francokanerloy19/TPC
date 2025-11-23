@@ -28,7 +28,7 @@ namespace TPC
 
         protected void btnEliminarPlan_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("EliminarPlanes.aspx", false);
         }
 
         protected void btnAgregarPlan_Click(object sender, EventArgs e)
