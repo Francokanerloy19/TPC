@@ -27,26 +27,17 @@
                         <div class="card-body bg-dark text-light p-5">
 
                             <div class="mb-4 text-center">
-                                <asp:Label ID="lblDescripcion" runat="server"
-                                    CssClass="form-label d-block mb-3 fs-5 text-white"
-                                    Text="Motivo (opcional)">
-                                </asp:Label>
+                                <asp:Label ID="lblDescripcion" runat="server" CssClass="form-label d-block mb-3 fs-5 text-white" Text="Motivo (opcional)"> </asp:Label>
 
                                 <div class="d-flex justify-content-center">
-                                    <asp:TextBox ID="txtDescripcion" runat="server"
-                                        TextMode="MultiLine" Rows="5"
-                                        CssClass="form-control form-control-lg w-75"
-                                        placeholder="Ingrese el motivo de la acción...">
-                                    </asp:TextBox>
+                                    <asp:TextBox ID="txtDescripcion" runat="server" TextMode="MultiLine" Rows="5" CssClass="form-control form-control-lg w-75" placeholder="Ingrese el motivo de la acción..."> </asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="d-flex justify-content-center gap-3 mt-4">
-                                <asp:Button Text="Eliminar" ID="btnEliminarAccion" runat="server"
-                                    CssClass="btn btn-danger btn-lg px-4" />
+                                <asp:Button Text="Eliminar" ID="btnEliminarAccion" runat="server" CssClass="btn btn-danger btn-lg px-4"  OnClick="btnEliminarAccion_Click"/>
 
-                                <asp:Button Text="Cancelar" ID="btnCancelar" runat="server"
-                                    CssClass="btn btn-secondary btn-lg px-4" />
+                                <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-secondary btn-lg px-4"  OnClick="btnCancelar_Click"/>
                             </div>
 
                         </div>

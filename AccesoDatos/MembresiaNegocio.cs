@@ -114,5 +114,63 @@ namespace AccesoDatos
         }
 
 
+        public string Eliminar(int IdMembresia)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("DELETE FROM Membresia WHERE IdMembresia = @IdMembresia;");
+                accesoDatos.setearParametros("@IdMembresia", IdMembresia);
+                accesoDatos.ejecutarAccion();
+
+                return null; // ✅ sin errores
+            }
+            catch (Exception ex)
+            {
+                return ex.Message; // ✅ devolvemos el error real
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public Membresia buscarPorId(int id)
+        {
+            Membresia membresia = null;
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta(
+                    "SELECT M.IdMembresia, M.Nombre, M.PrecioBase " +
+                    "FROM Membresia M WHERE M.IdMembresia = @idMembresia"
+                );
+
+                accesoDatos.setearParametros("@idMembresia", id);
+
+                accesoDatos.ejecutarConsulta();
+
+                if (accesoDatos.Lector.Read())
+                {
+                    membresia = new Membresia();
+                    membresia.IdMembresia = (int)accesoDatos.Lector["IdMembresia"];
+                    membresia.Nombre = (string)accesoDatos.Lector["Nombre"];
+                    membresia.PrecioBase = (decimal)accesoDatos.Lector["PrecioBase"];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+            return membresia;
+        }
+
     }
 }

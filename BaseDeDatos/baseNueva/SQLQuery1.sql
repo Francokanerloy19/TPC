@@ -86,6 +86,9 @@ CREATE TABLE InscripcionActividad (
 );
 GO
 
+-- =============================
+-- TABLA: Usuario
+-- =============================
 CREATE TABLE Usuario (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Usuario VARCHAR(50) NOT NULL UNIQUE,
@@ -93,6 +96,20 @@ CREATE TABLE Usuario (
     TipoUser INT NOT NULL  -- 1 = Admin, 2 = Empleado, etc.
 );
 GO
+
+-- =============================
+-- TABLA: LogSocio
+-- =============================
+--CREATE TABLE LogSocio (
+--    IdLog INT IDENTITY(1,1) PRIMARY KEY,
+--    Accion VARCHAR(20) NOT NULL,
+--    Tabla VARCHAR(50) NOT NULL,
+--    IdRegistro INT NOT NULL,           -- Relación segura
+--    NombreRegistro VARCHAR(100) NULL,  -- Nombre del socio (opcional)
+--    Usuario VARCHAR(50) NOT NULL,
+--    Descripcion VARCHAR(200) NULL,
+--    Fecha DATETIME NOT NULL DEFAULT GETDATE()
+--);
 
 -- ==================================================================================================================================
 -- INSERT

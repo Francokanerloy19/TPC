@@ -11,7 +11,11 @@ namespace TPC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                string resultado = Session["ErrorEliminar"] as string;
+                lblMensaje.Text = resultado;
+            }
         }
 
        

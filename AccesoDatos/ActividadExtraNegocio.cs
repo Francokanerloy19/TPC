@@ -95,5 +95,60 @@ namespace AccesoDatos
 
         }
 
+        public string Eliminar(int IdActividadExtra)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("DELETE FROM ActividadExtra WHERE IdActividad = @IdActividad;");
+                accesoDatos.setearParametros("@IdActividad", IdActividadExtra);
+                accesoDatos.ejecutarAccion();
+                return null;
+            }
+            catch (Exception ex)
+            {
+
+                return ex.Message;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+        }
+
+        public ActividadExtra ObtenerPorId(int id)
+        {
+            ActividadExtra actividad = null;
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("SELECT IdActividad, NombreActividad, PrecioExtra, Descripcion FROM ActividadExtra WHERE IdActividad = @Id");
+                accesoDatos.setearParametros("@Id", id);
+                accesoDatos.ejecutarConsulta();
+
+                if (accesoDatos.Lector.Read())
+                {
+                    actividad = new ActividadExtra();
+                    actividad.IdActividad = (int)accesoDatos.Lector["IdActividad"];
+                    actividad.NombreActividad = (string)accesoDatos.Lector["NombreActividad"];
+                    actividad.PrecioExtra = (decimal)accesoDatos.Lector["PrecioExtra"];
+                    actividad.Descripción = (string)accesoDatos.Lector["Descripcion"];
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+            return actividad; // Devuelve null si no existe
+        }
+
     }
 }
