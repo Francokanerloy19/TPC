@@ -149,10 +149,7 @@ namespace AccesoDatos
 
             try
             {
-                accesoDatos.setearConsulta(
-                    "SELECT M.IdMembresia, M.Nombre, M.PrecioBase " +
-                    "FROM Membresia M WHERE M.IdMembresia = @idMembresia"
-                );
+                accesoDatos.setearConsulta("SELECT M.IdMembresia, M.Nombre, M.PrecioBase, M.DuracionDias " + "FROM Membresia M WHERE M.IdMembresia = @idMembresia" );
 
                 accesoDatos.setearParametros("@idMembresia", id);
 
@@ -164,6 +161,7 @@ namespace AccesoDatos
                     membresia.IdMembresia = (int)accesoDatos.Lector["IdMembresia"];
                     membresia.Nombre = (string)accesoDatos.Lector["Nombre"];
                     membresia.PrecioBase = (decimal)accesoDatos.Lector["PrecioBase"];
+                    membresia.DuracionDias = (int)accesoDatos.Lector["DuracionDias"];
                 }
             }
             catch (Exception ex)
@@ -177,6 +175,32 @@ namespace AccesoDatos
 
             return membresia;
         }
+
+        public void ModificarMembresia(int idMembresia, string nombre, decimal precioBase, int duracionDias)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta( "UPDATE Membresia " + "SET Nombre = @Nombre, " + "PrecioBase = @PrecioBase, " +"DuracionDias = @DuracionDias " +"WHERE IdMembresia = @IdMembresia;" );
+
+                datos.setearParametros("@IdMembresia", idMembresia);
+                datos.setearParametros("@Nombre", nombre);
+                datos.setearParametros("@PrecioBase", precioBase);
+                datos.setearParametros("@DuracionDias", duracionDias);
+
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
 
     }
 }

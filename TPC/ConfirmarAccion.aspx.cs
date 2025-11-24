@@ -41,15 +41,16 @@ namespace TPC
                     Session["ErrorEliminar"] = null;
                 }
                 Response.Redirect("Admin.aspx", false);
-                // logica para el log 
-
-                // (string Accion, string tabla, int idRegistro, string nombre, string nombreUsuario, string comentario )
+                
             }
             else if (tipoAccion == 2)
             {
                 int idActividad = Convert.ToInt32(Session["actividadExtraSeleccionadaEliminar"]);
                 ActividadExtraNegocio actividadExtraNegocio = new ActividadExtraNegocio();
                 ActividadExtra actividadExtra = actividadExtraNegocio.ObtenerPorId(idActividad);
+                Usuario usuario = (Usuario)Session["usuario"];
+                LogActividadesNegocio logActividadesNegocio = new LogActividadesNegocio();
+                logActividadesNegocio.agregar("Delete", "Membresia", idActividad, actividadExtra.NombreActividad, usuario.User, motivo);
                 string resultadoActividad = actividadExtraNegocio.Eliminar(idActividad);
                 if (resultadoActividad != null)
                 {
@@ -62,17 +63,15 @@ namespace TPC
                     Session["ErrorEliminar"] = null;
                 }
                 Response.Redirect("Admin.aspx", false);
-                // logica para el log
+                
 
             }
-            else if (tipoAccion == 3) 
-            {
-            }
+            
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Admin.aspx", false);
         }
     }
 }

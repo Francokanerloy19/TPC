@@ -38,6 +38,7 @@ namespace TPC
             Usuario usuario = (Usuario)Session["usuario"];
             LogActividadesNegocio logActividadesNegocio = new LogActividadesNegocio();
             logActividadesNegocio.agregar("Insert", "Membresia", idMembresia, membresia.Nombre, usuario.User, "");
+            Response.Redirect("Membresia.aspx", false);
         }
 
         protected void btnAgregarActividad_Click(object sender, EventArgs e)
@@ -57,6 +58,8 @@ namespace TPC
             Usuario usuario = (Usuario)Session["usuario"];
             LogActividadesNegocio logActividadesNegocio = new LogActividadesNegocio();
             logActividadesNegocio.agregar("Insert", "Actividad Extra", idActividadExtra, actividadExtra.NombreActividad, usuario.User, "");
+            Response.Redirect("Membresia.aspx", false);
+
         }
     }
 }

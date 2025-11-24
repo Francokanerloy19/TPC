@@ -155,5 +155,36 @@ namespace AccesoDatos
             return actividad; // Devuelve null si no existe
         }
 
+
+        public void ModificarActividad(int idActividad, string nombre, decimal precio, string descripcion)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE ActividadExtra " + "SET NombreActividad = @NombreActividad, " + " PrecioExtra = @PrecioExtra, " + " Descripcion = @Descripcion " + "WHERE IdActividad = @IdActividad;");
+
+                accesoDatos.setearParametros("@IdActividad", idActividad);
+                accesoDatos.setearParametros("@NombreActividad", nombre);
+                accesoDatos.setearParametros("@PrecioExtra", precio);
+                accesoDatos.setearParametros("@Descripcion", descripcion);
+
+                accesoDatos.ejecutarAccion();
+
+               
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+
+
+
     }
 }

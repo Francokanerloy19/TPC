@@ -79,7 +79,7 @@
 
         <asp:Button Text="Agregar" ID="btnAgregar" runat="server" CssClass="btn btn-success" OnClientClick=" validar()"  OnClick="btnAgregar_Click"/>
         <asp:Button Text="Agregar Admin" ID="btnAgregarAdmin" runat="server" CssClass="btn btn-primary" OnClientClick=" validar()"  OnClick="btnAgregarAdmin_Click"/>
-        <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger" CausesValidation="false"  OnClick="btnCancelar_Click"/>
+        <asp:Button Text="Volver" ID="btnCancelar" runat="server" CssClass="btn btn-danger" CausesValidation="false"  OnClick="btnCancelar_Click"/>
         <br />
         <br />
         <asp:Label ID="lblMensaje" CssClass="bg-success" runat="server" />

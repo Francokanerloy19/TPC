@@ -33,6 +33,7 @@
                             </asp:DropDownList>
                             <br />
                             <asp:Button Text="Eliminar" ID="btnEliminarMembresía" runat="server" CssClass="btn btn-danger"  OnClick="btnEliminarMembresía_Click"/>
+                            <asp:Button Text="Modificar" ID="btnModificarMembresía" runat="server" CssClass="btn btn-success"  OnClick="btnModificarMembresía_Click"/>
                         </div>
                     </div>
                 </div>
@@ -49,7 +50,7 @@
                             </asp:DropDownList>
                             <br />
                             <asp:Button Text="Eliminar" ID="btnEliminarActividades" runat="server" CssClass="btn btn-danger"  OnClick="btnEliminarActividades_Click"/>
-
+                            <asp:Button Text="Modificar" ID="btnModificarActividades" runat="server" CssClass="btn btn-success" OnClick="btnModificarActividades_Click"/>
                         </div>
                     </div>
                 </div>

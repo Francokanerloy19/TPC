@@ -33,6 +33,15 @@ namespace TPC
         protected global::System.Web.UI.WebControls.Button btnEliminarMembresía;
 
         /// <summary>
+        /// Control btnModificarMembresía.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModificarMembresía;
+
+        /// <summary>
         /// Control ddlActividadExtra.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace TPC
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEliminarActividades;
+
+        /// <summary>
+        /// Control btnModificarActividades.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnModificarActividades;
 
         /// <summary>
         /// Control btnCancelar.

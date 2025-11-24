@@ -25,11 +25,6 @@ namespace TPC
             Response.Redirect("CrearUsuario.aspx", false);
         }
 
-        protected void btnModificarPlan_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btnEliminarPlan_Click(object sender, EventArgs e)
         {
             Response.Redirect("EliminarPlanes.aspx", false);

@@ -49,10 +49,13 @@ namespace TPC
             {
                 int membresiaSeleccionadaEliminar = int.Parse(ddlMembresia.SelectedValue);
                 Session["membresiaSeleccionadaEliminar"] = membresiaSeleccionadaEliminar;
+                int membresiaSeleccionadaModificar = int.Parse(ddlMembresia.SelectedValue);
+                Session["membresiaSeleccionadaModificar"] = membresiaSeleccionadaModificar;
             }
             else
             {
                 Session["membresiaSeleccionadaEliminar"] = null;
+                Session["membresiaSeleccionadaModificar"] = null;
             }
         }
 
@@ -64,10 +67,13 @@ namespace TPC
             {
                 int actividadExtraSeleccionadaEliminar = int.Parse(ddlActividadExtra.SelectedValue);
                 Session["actividadExtraSeleccionadaEliminar"] = actividadExtraSeleccionadaEliminar;
+                int actividadExtraSeleccionadaModificar = int.Parse(ddlActividadExtra.SelectedValue);
+                Session["actividadExtraSeleccionadaModificar"] = actividadExtraSeleccionadaModificar;
             }
             else
             {
                 Session["actividadExtraSeleccionadaEliminar"] = null;
+                Session["actividadExtraSeleccionadaModificar"] = null;
             }
 
 
@@ -101,6 +107,32 @@ namespace TPC
             {
                 Session["TipoAccion"] = "2"; //EliminarActividad
                 Response.Redirect("ConfirmarAccion.aspx", false);
+            }
+            else
+            {
+                lbl.Text = "Seleciona una opcion para continuar";
+            }
+        }
+
+        protected void btnModificarMembresía_Click(object sender, EventArgs e)
+        {
+            if (Session["membresiaSeleccionadaModificar"] != null)
+            {
+                Session["TipoAccion"] = "1"; //Modificar Membresia
+                Response.Redirect("ModificarPlanes.aspx", false);
+            }
+            else
+            {
+                lbl.Text = "Seleciona una opcion para continuar";
+            }
+        }
+
+        protected void btnModificarActividades_Click(object sender, EventArgs e)
+        {
+            if (Session["actividadExtraSeleccionadaModificar"] != null)
+            {
+                Session["TipoAccion"] = "2"; //Modificar Actividad
+                Response.Redirect("ModificarPlanes.aspx", false);
             }
             else
             {

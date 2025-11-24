@@ -131,6 +131,7 @@
     <Content Include="ListadoSociosPorVencer.aspx" />
     <Content Include="Membresia.aspx" />
     <Content Include="ModificarMembresia.aspx" />
+    <Content Include="ModificarPlanes.aspx" />
     <Content Include="ModificarSocio.aspx" />
     <Content Include="NuevoSocio.aspx" />
     <Content Include="Pagos.aspx" />
@@ -314,6 +315,13 @@
     </Compile>
     <Compile Include="ModificarMembresia.aspx.designer.cs">
       <DependentUpon>ModificarMembresia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarPlanes.aspx.cs">
+      <DependentUpon>ModificarPlanes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModificarPlanes.aspx.designer.cs">
+      <DependentUpon>ModificarPlanes.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarSocio.aspx.cs">
       <DependentUpon>ModificarSocio.aspx</DependentUpon>
