@@ -44,5 +44,33 @@ namespace AccesoDatos
            
         }
 
+        public int AgregarUsuario(string user, string pass, int rol)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("INSERT INTO Usuario (Usuario, Pass, TipoUser) " +"VALUES (@Usuario, @Pass, @TipoUser); " + "SELECT SCOPE_IDENTITY();");
+
+                datos.setearParametros("@Usuario", user);
+                datos.setearParametros("@Pass", pass);
+                datos.setearParametros("@TipoUser", rol);
+
+                object resultado = datos.ejecutarEscalar();
+                int idGenerado = Convert.ToInt32(resultado);
+
+                return idGenerado;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+
     }
 }

@@ -111,6 +111,25 @@ GO
 --    Fecha DATETIME NOT NULL DEFAULT GETDATE()
 --);
 
+-- =============================
+-- TABLA: LogActividad
+-- =============================
+--CREATE TABLE LogActividades (
+--    IdLog INT IDENTITY(1,1) PRIMARY KEY,
+--    Accion VARCHAR(20) NOT NULL,        -- INSERT / UPDATE / DELETE
+--    Tabla VARCHAR(50) NOT NULL,         -- Siempre será 'Membresia'
+--    IdRegistro INT NOT NULL,            -- IdMembresia afectada
+--    NombreRegistro VARCHAR(100) NULL,   -- Nombre del plan (opcional)
+--    Usuario VARCHAR(50) NOT NULL,       -- Usuario que realizó la acción
+--    Descripcion VARCHAR(200) NULL,      -- Detalle o motivo
+--    Fecha DATETIME NOT NULL DEFAULT GETDATE()
+--);
+--GO
+select * from LogActividades
+SELECT IdLog, Accion, Tabla, IdRegistro, NombreRegistro, Usuario, Descripcion, Fecha FROM LogActividades
+
+DELETE FROM ActividadExtra WHERE IdActividad = 5
+
 -- ==================================================================================================================================
 -- INSERT
 -- ==================================================================================================================================

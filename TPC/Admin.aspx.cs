@@ -22,7 +22,7 @@ namespace TPC
 
         protected void btnCrearUsuario_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("CrearUsuario.aspx", false);
         }
 
         protected void btnModificarPlan_Click(object sender, EventArgs e)
