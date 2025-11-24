@@ -50,6 +50,7 @@
     <Compile Include="ActividadExtra.cs" />
     <Compile Include="InscripcionActividad.cs" />
     <Compile Include="Inscripción.cs" />
+    <Compile Include="LogActividad.cs" />
     <Compile Include="Membresia.cs" />
     <Compile Include="Pago.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

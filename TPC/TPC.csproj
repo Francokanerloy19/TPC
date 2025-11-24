@@ -123,6 +123,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Gestion.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Historial.aspx" />
     <Content Include="HistorialPago.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="ListadoSocio.aspx" />
@@ -256,6 +257,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Historial.aspx.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Historial.aspx.designer.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
     </Compile>
     <Compile Include="HistorialPago.aspx.cs">
       <DependentUpon>HistorialPago.aspx</DependentUpon>

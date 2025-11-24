@@ -44,5 +44,19 @@ namespace TPC
         {
             Response.Redirect("Inicio.aspx", false);
         }
+
+        protected void btnHistorialPlanes_Click(object sender, EventArgs e)
+        {
+            Session["origen"] = 1;
+            
+            Response.Redirect("Historial.aspx", false);
+        }
+
+        protected void btnHistorialSocios_Click(object sender, EventArgs e)
+        {
+            Session["origen"] = 2;
+            Response.Redirect("Historial.aspx", false);
+
+        }
     }
 }

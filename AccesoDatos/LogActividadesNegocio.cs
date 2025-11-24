@@ -38,5 +38,43 @@ namespace AccesoDatos
             }
 
         }
+        public List<LogActividad> ListarLogs()
+        {
+            List<LogActividad> lista = new List<LogActividad>();
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                // Consulta para traer todos los logs
+                accesoDatos.setearConsulta("SELECT IdLog, Accion, Tabla, IdRegistro, NombreRegistro, Usuario, Descripcion, Fecha FROM LogActividades");
+                accesoDatos.ejecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    LogActividad log = new LogActividad();
+
+                    log.IdLog = (int)accesoDatos.Lector["IdLog"];
+                    log.Accion = accesoDatos.Lector["Accion"].ToString();
+                    log.Tabla = accesoDatos.Lector["Tabla"].ToString();
+                    log.IdRegistro = (int)accesoDatos.Lector["IdRegistro"];
+                    log.NombreRegistro = accesoDatos.Lector["NombreRegistro"] != DBNull.Value ? accesoDatos.Lector["NombreRegistro"].ToString() : null;
+                    log.Usuario = accesoDatos.Lector["Usuario"].ToString();
+                    log.Descripcion = accesoDatos.Lector["Descripcion"] != DBNull.Value ? accesoDatos.Lector["Descripcion"].ToString() : null;
+                    log.Fecha = (DateTime)accesoDatos.Lector["Fecha"];
+
+                    lista.Add(log);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+
+            return lista;
+        }
     }
 }
