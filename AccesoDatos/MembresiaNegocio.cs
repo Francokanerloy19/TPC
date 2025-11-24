@@ -87,23 +87,27 @@ namespace AccesoDatos
             return Lista;
         }
 
-        public void agregar(Membresia membresia)
+        public int agregar(Membresia membresia)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
+            int idGenerado = 0;
 
             try
             {
-                accesoDatos.setearConsulta(" INSERT INTO Membresia (Nombre, DuracionDias, PrecioBase) VALUES (@Nombre, @DuracionDias, @PrecioBase);");
+                // La consulta ahora retorna el ID recién insertado
+                accesoDatos.setearConsulta(@" INSERT INTO Membresia (Nombre, DuracionDias, PrecioBase)  VALUES (@Nombre, @DuracionDias, @PrecioBase); SELECT CAST(SCOPE_IDENTITY() AS INT);");
 
                 accesoDatos.setearParametros("@Nombre", membresia.Nombre);
                 accesoDatos.setearParametros("@DuracionDias", membresia.DuracionDias);
                 accesoDatos.setearParametros("@PrecioBase", membresia.PrecioBase);
-                accesoDatos.ejecutarAccion(); 
-               
+
+                
+                object resultado = accesoDatos.ejecutarEscalar();
+                idGenerado = Convert.ToInt32(resultado); 
+
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -111,7 +115,9 @@ namespace AccesoDatos
                 accesoDatos.cerrarConexion();
             }
 
+            return idGenerado;
         }
+
 
 
         public string Eliminar(int IdMembresia)

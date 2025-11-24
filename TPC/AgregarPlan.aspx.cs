@@ -32,8 +32,12 @@ namespace TPC
             membresia.PrecioBase = decimal.Parse(txtPrecio.Text);
 
             MembresiaNegocio negocio = new MembresiaNegocio();
-            negocio.agregar(membresia);
+            int idMembresia = negocio.agregar(membresia);
 
+
+            Usuario usuario = (Usuario)Session["usuario"];
+            LogActividadesNegocio logActividadesNegocio = new LogActividadesNegocio();
+            logActividadesNegocio.agregar("Insert", "Membresia", idMembresia, membresia.Nombre, usuario.User, "");
         }
 
         protected void btnAgregarActividad_Click(object sender, EventArgs e)
@@ -49,8 +53,10 @@ namespace TPC
             actividadExtra.Descripción = TxtDescripcion.Text;
 
             ActividadExtraNegocio negocio = new ActividadExtraNegocio();
-            negocio.agregar(actividadExtra);
-
+            int idActividadExtra = negocio.agregar(actividadExtra);
+            Usuario usuario = (Usuario)Session["usuario"];
+            LogActividadesNegocio logActividadesNegocio = new LogActividadesNegocio();
+            logActividadesNegocio.agregar("Insert", "Actividad Extra", idActividadExtra, actividadExtra.NombreActividad, usuario.User, "");
         }
     }
 }

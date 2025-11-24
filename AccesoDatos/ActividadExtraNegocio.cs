@@ -69,23 +69,26 @@ namespace AccesoDatos
             }
         }
 
-        public void agregar(ActividadExtra actividadExtra)
+        public int agregar(ActividadExtra actividadExtra)
         {
             AccesoDatos accesoDatos = new AccesoDatos();
+            int idGenerado = 0;
 
             try
             {
-                accesoDatos.setearConsulta(" INSERT INTO ActividadExtra (NombreActividad, PrecioExtra, Descripcion) VALUES(@NombreActividad,@PrecioExtra, @Descripcion);");
+                // Insertamos y devolvemos el ID recién generado
+                accesoDatos.setearConsulta(@" INSERT INTO ActividadExtra (NombreActividad, PrecioExtra, Descripcion)   VALUES(@NombreActividad, @PrecioExtra, @Descripcion);  SELECT CAST(SCOPE_IDENTITY() AS INT);");
 
                 accesoDatos.setearParametros("@NombreActividad", actividadExtra.NombreActividad);
                 accesoDatos.setearParametros("@PrecioExtra", actividadExtra.PrecioExtra);
                 accesoDatos.setearParametros("@Descripcion", actividadExtra.Descripción);
-                accesoDatos.ejecutarAccion();
 
+                // Ejecutamos la consulta y convertimos el resultado a int
+                object resultado = accesoDatos.ejecutarEscalar();
+                idGenerado = Convert.ToInt32(resultado);
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
             finally
@@ -93,7 +96,9 @@ namespace AccesoDatos
                 accesoDatos.cerrarConexion();
             }
 
+            return idGenerado;
         }
+
 
         public string Eliminar(int IdActividadExtra)
         {
