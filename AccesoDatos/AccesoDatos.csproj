@@ -52,6 +52,7 @@
     <Compile Include="EmailService.cs" />
     <Compile Include="IncripcionNegocio.cs" />
     <Compile Include="LogActividadesNegocio.cs" />
+    <Compile Include="LogSocioNegocio.cs" />
     <Compile Include="MembresiaNegocio.cs" />
     <Compile Include="PagoNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -23,12 +23,10 @@ namespace TPC
                     {
                         gvLog1.Visible = true;
                         gvLog2.Visible = false;
-
-
-                        //LogActividadesNegocio actividadesNegocio = new LogActividadesNegocio();
-                        //List<LogActividad> logActividads = actividadesNegocio.ListarLogs();
-                        //gvLog1.DataSource = logActividads;
-                        //gvLog1.DataBind();
+                         LogSocioNegocio logSocioNegocio = new LogSocioNegocio();;
+                        List<LogActividad> logActividads = logSocioNegocio.ListarLogs();
+                        gvLog1.DataSource = logActividads;
+                        gvLog1.DataBind();
                     }
                     else if (origen == 1)
                     {

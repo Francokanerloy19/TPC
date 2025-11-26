@@ -93,10 +93,13 @@ CREATE TABLE Usuario (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Usuario VARCHAR(50) NOT NULL UNIQUE,
     Pass VARCHAR(50) NOT NULL,
-    TipoUser INT NOT NULL  -- 1 = Admin, 2 = Empleado, etc.
+    TipoUser INT NOT NULL  -- 2 = Admin, 1 = Empleado, etc.
 );
 GO
 
+select * from Membresia M
+DELETE FROM Usuario
+WHERE Id = 7;
 -- =============================
 -- TABLA: LogSocio
 -- =============================
@@ -125,9 +128,9 @@ GO
 --    Fecha DATETIME NOT NULL DEFAULT GETDATE()
 --);
 --GO
-select * from LogActividades
+select * from LogSocio
 SELECT IdLog, Accion, Tabla, IdRegistro, NombreRegistro, Usuario, Descripcion, Fecha FROM LogActividades
-
+SELECT IdLog, Accion, Tabla, IdRegistro, NombreRegistro, Usuario, Descripcion, Fecha FROM LogSocio 
 DELETE FROM ActividadExtra WHERE IdActividad = 5
 
 -- ==================================================================================================================================

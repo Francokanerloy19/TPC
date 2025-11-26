@@ -71,8 +71,13 @@ namespace TPC
             
             SocioNegocio socioNegocio = new SocioNegocio();
             int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
-            socioNegocio.baja(IdSocio, true);
+            socioNegocio.baja(IdSocio, true); // utilizo la funcion pra dar de baja para cambiar el estado del socio/a a ACTIVO con el true
             Response.Redirect("Gestion.aspx", false);
+
+            Usuario usuario = (Usuario)Session["usuario"];
+            LogSocioNegocio logSocioNegocio = new LogSocioNegocio();
+            Socio socio = socioNegocio.filtrarPorID(IdSocio);
+            logSocioNegocio.agregar("Pago", "Socio", IdSocio, socio.Nombre, usuario.User, "Se registra el pago realizado por: "+ metodo+ " de $"+precioFinal);
         }
     }
 }

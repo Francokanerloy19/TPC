@@ -19,8 +19,11 @@ namespace TPC
                 if (Session["IdSocioSeleccionado"] != null)
                 {
                     int idSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
-                    
+                    if (Session["ErrorEliminar"]!= null) { 
+                    lblAlerta.Text = Session["ErrorEliminar"].ToString();
+                }                
                 }
+
             }
         }
 
@@ -98,28 +101,29 @@ namespace TPC
 
         protected void btnDarDeBajaMembresia_Click(object sender, EventArgs e)
         {
-
-            int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
-            PagoNegocio pagoNegocio = new PagoNegocio();
-            List<Pago> Listapago = pagoNegocio.Listar(IdSocio);
-            if (Listapago == null || Listapago.Count == 0)
-            {
-                lblAlerta.Text = "El socio no tiene pagos registrados.";
-                return;
-            }
-            Pago pago = Listapago[Listapago.Count - 1];
-            if(pago.FechaPago.Month == DateTime.Now.Month && pago.FechaPago.Year == DateTime.Now.Year)
-            {
-                IncripcionNegocio negocio = new IncripcionNegocio();
-                negocio.eliminarUltimaInscripcion(IdSocio);
-                SocioNegocio socioNegocio = new SocioNegocio();
-                socioNegocio.baja(IdSocio, false);
-                Response.Redirect("ListadoSocio.aspx", false);
-            }
-            else
-            {
-                lblAlerta.Text = "No hay Pagos registrado este mes";
-            }
+            Session["TipoAccion"] = "3";
+            Response.Redirect("ConfirmarAccion.aspx", false);
+            //int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+            //PagoNegocio pagoNegocio = new PagoNegocio();
+            //List<Pago> Listapago = pagoNegocio.Listar(IdSocio);
+            //if (Listapago == null || Listapago.Count == 0)
+            //{
+            //    lblAlerta.Text = "El socio no tiene pagos registrados.";
+            //    return;
+            //}
+            //Pago pago = Listapago[Listapago.Count - 1];
+            //if(pago.FechaPago.Month == DateTime.Now.Month && pago.FechaPago.Year == DateTime.Now.Year)
+            //{
+            //    IncripcionNegocio negocio = new IncripcionNegocio();
+            //    negocio.eliminarUltimaInscripcion(IdSocio);
+            //    SocioNegocio socioNegocio = new SocioNegocio();
+            //    socioNegocio.baja(IdSocio, false);
+            //    Response.Redirect("ListadoSocio.aspx", false);
+            //}
+            //else
+            //{
+            //    lblAlerta.Text = "No hay Pagos registrado este mes";
+            //}
 
                 
         }

@@ -13,32 +13,32 @@ namespace TPC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (!IsPostBack)
             {
                 CargarSocios();
-                
+
             }
 
         }
         private void CargarSocios()
         {
             int id = int.Parse(Session["IdSocioSeleccionado"].ToString());
-            
-                IncripcionNegocio negocio = new IncripcionNegocio();
-                Inscripción socio = negocio.filtrarPorID(id);
-                if (socio != null)
-                {
-                    lblMembresia.Text = socio.membresia.Nombre.ToString();
-                    lblActividaEXtra.Text = socio.actividadExtra.NombreActividad.ToString();
-                    lblDescripcion.Text = socio.actividadExtra.Descripción.ToString();
-                    txtFechaVencimiento.Text = socio.FechaVencimiento.ToString("yyyy-MM-dd");
-                    txtFechaInscripcion.Text = socio.FechaInscripcion.ToString("yyyy-MM-dd");
-                }
-            
+
+            IncripcionNegocio negocio = new IncripcionNegocio();
+            Inscripción socio = negocio.filtrarPorID(id);
+            if (socio != null)
+            {
+                lblMembresia.Text = socio.membresia.Nombre.ToString();
+                lblActividaEXtra.Text = socio.actividadExtra.NombreActividad.ToString();
+                lblDescripcion.Text = socio.actividadExtra.Descripción.ToString();
+                txtFechaVencimiento.Text = socio.FechaVencimiento.ToString("yyyy-MM-dd");
+                txtFechaInscripcion.Text = socio.FechaInscripcion.ToString("yyyy-MM-dd");
+            }
+
 
         }
-       
+
         protected void btnModificar_Click(object sender, EventArgs e)
         {
             IncripcionNegocio incripcionNegocio = new IncripcionNegocio();
@@ -48,8 +48,22 @@ namespace TPC
             inscripción.IdInscripcion = incripcionNegocio.ultimaInscripcion(id);
             inscripción.FechaVencimiento = DateTime.ParseExact(txtFechaVencimiento.Text, "yyyy-MM-dd", null);
             inscripción.FechaInscripcion = DateTime.ParseExact(txtFechaInscripcion.Text, "yyyy-MM-dd", null);
-            incripcionNegocio.modificarInscripcion(inscripción);
-            Response.Redirect("Gestion.aspx", false);
+            Socio socio = new Socio();
+            SocioNegocio socioNegocio = new SocioNegocio();
+            socio = socioNegocio.filtrarPorID(inscripción.IdSocio);
+            if (string.IsNullOrWhiteSpace(txtDescripcion.Text))
+            {
+                lblError.Text = "Motivo vacio";
+            }
+            else
+            {
+                Usuario usuario = (Usuario)Session["usuario"];
+                LogSocioNegocio logSocioNegocio = new LogSocioNegocio();
+                logSocioNegocio.agregar("Edit", "Socio", inscripción.IdSocio, socio.Nombre, usuario.User, txtDescripcion.Text);
+                incripcionNegocio.modificarInscripcion(inscripción);
+
+                Response.Redirect("Gestion.aspx", false);
+            }
         }
 
         protected void btnCancelar_Click(object sender, EventArgs e)
@@ -58,3 +72,6 @@ namespace TPC
         }
     }
 }
+
+
+;

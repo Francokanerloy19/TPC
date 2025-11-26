@@ -65,6 +65,38 @@ namespace TPC
                 Response.Redirect("Admin.aspx", false);
                 
 
+            } else if (tipoAccion == 3)
+            {
+                btnEliminarAccion.CssClass += " btn-success";
+
+                int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+                PagoNegocio pagoNegocio = new PagoNegocio();
+                List<Pago> Listapago = pagoNegocio.Listar(IdSocio);
+                if (Listapago == null || Listapago.Count == 0)
+                {
+                    
+                    Session["ErrorEliminar"] = "El socio no tiene pagos registrados.";
+                    return;
+                }
+                Pago pago = Listapago[Listapago.Count - 1];
+                if (pago.FechaPago.Month == DateTime.Now.Month && pago.FechaPago.Year == DateTime.Now.Year)
+                {
+                    IncripcionNegocio negocio = new IncripcionNegocio();
+                    negocio.eliminarUltimaInscripcion(IdSocio);
+                    SocioNegocio socioNegocio = new SocioNegocio();
+                    socioNegocio.baja(IdSocio, false);
+                    Response.Redirect("ListadoSocio.aspx", false);
+
+                    Usuario usuario = (Usuario)Session["usuario"];
+                    LogSocioNegocio logSocioNegocio = new LogSocioNegocio();
+                    Socio socio = socioNegocio.filtrarPorID(IdSocio);
+                    logSocioNegocio.agregar("Delete", "Socio", IdSocio, socio.Nombre, usuario.User, motivo);
+
+                }
+                else
+                {
+                    Session["ErrorEliminar"] = "No hay Pagos registrado este mes";
+                }
             }
             
         }

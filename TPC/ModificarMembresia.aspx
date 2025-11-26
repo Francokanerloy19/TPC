@@ -94,9 +94,16 @@
             </div>
 
             <div class="card-footer text-center bg-dark">
+                <div class=" text-center">
+                     <label for="Motivo"> Motivo</label>
+                    <asp:TextBox runat="server" ID="txtDescripcion" CssClass="form-control mx-auto w-75" />
+                    <br />
+
+                </div>
                 <asp:Button Text="Actualizar" ID="btnModificar" runat="server" CssClass="btn btn-success mx-2" OnClientClick="return validar()" OnClick="btnModificar_Click" />
-                <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger mx-2" CausesValidation="false"  OnClick="btnCancelar_Click"/>
+                <asp:Button Text="Cancelar" ID="btnCancelar" runat="server" CssClass="btn btn-danger mx-2" CausesValidation="false" OnClick="btnCancelar_Click" />
             </div>
+            <asp:Label ID="lblError" CssClass="bg-success" runat="server" />
         </div>
     </div>
 </asp:Content>
