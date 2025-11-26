@@ -58,7 +58,7 @@ namespace TPC
 
             Usuario usuario = (Usuario)Session["usuario"];
             LogSocioNegocio logSocioNegocio = new LogSocioNegocio();
-            logSocioNegocio.agregar("Delete", "Socio", socioaux.IdSocio, socioaux.Nombre, usuario.User, "Actualizacion de datos personales");
+            logSocioNegocio.agregar("Edit", "Socio", socioaux.IdSocio, socioaux.Nombre, usuario.User, "Actualizacion de datos personales");
 
             Response.Redirect("Gestion.aspx", false);
         }

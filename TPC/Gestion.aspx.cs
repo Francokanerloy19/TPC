@@ -68,20 +68,20 @@ namespace TPC
 
         protected void btnDarDeBaja_Click(object sender, EventArgs e)
         {
-            Socio socioaux = new Socio();
-            socioaux.IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+            Session["TipoAccion"] = "4";
+            Response.Redirect("ConfirmarAccion.aspx", false);
 
-            SocioNegocio negocio = new SocioNegocio();
-            negocio.baja(socioaux.IdSocio, false);
         }
 
         protected void btnReactivar_Click(object sender, EventArgs e)
         {
-            Socio socioaux = new Socio();
-            socioaux.IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+            Session["TipoAccion"] = "5";
+            Response.Redirect("ConfirmarAccion.aspx", false);
+            //Socio socioaux = new Socio();
+            //socioaux.IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
 
-            SocioNegocio negocio = new SocioNegocio();
-            negocio.baja(socioaux.IdSocio, true);
+            //SocioNegocio negocio = new SocioNegocio();
+            //negocio.baja(socioaux.IdSocio, true);
         }
 
         protected void btnMembresia_Click(object sender, EventArgs e)
@@ -102,30 +102,7 @@ namespace TPC
         protected void btnDarDeBajaMembresia_Click(object sender, EventArgs e)
         {
             Session["TipoAccion"] = "3";
-            Response.Redirect("ConfirmarAccion.aspx", false);
-            //int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
-            //PagoNegocio pagoNegocio = new PagoNegocio();
-            //List<Pago> Listapago = pagoNegocio.Listar(IdSocio);
-            //if (Listapago == null || Listapago.Count == 0)
-            //{
-            //    lblAlerta.Text = "El socio no tiene pagos registrados.";
-            //    return;
-            //}
-            //Pago pago = Listapago[Listapago.Count - 1];
-            //if(pago.FechaPago.Month == DateTime.Now.Month && pago.FechaPago.Year == DateTime.Now.Year)
-            //{
-            //    IncripcionNegocio negocio = new IncripcionNegocio();
-            //    negocio.eliminarUltimaInscripcion(IdSocio);
-            //    SocioNegocio socioNegocio = new SocioNegocio();
-            //    socioNegocio.baja(IdSocio, false);
-            //    Response.Redirect("ListadoSocio.aspx", false);
-            //}
-            //else
-            //{
-            //    lblAlerta.Text = "No hay Pagos registrado este mes";
-            //}
-
-                
+            Response.Redirect("ConfirmarAccion.aspx", false);      
         }
 
         protected void btnModificarMembresia_Click(object sender, EventArgs e)

@@ -13,7 +13,20 @@ namespace TPC
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
 
+                // Si la acción guardada en sesión es 5 → poner verde
+                if (Session["tipoAccion"] != null)
+                {
+                    int tipoAccion = int.Parse(Session["tipoAccion"].ToString());
+
+                    if (tipoAccion == 5)
+                    {
+                        btnEliminarAccion.CssClass = "btn btn-success btn-lg px-4";
+                    }
+                }
+            }
         }
 
         protected void btnEliminarAccion_Click(object sender, EventArgs e)
@@ -77,6 +90,7 @@ namespace TPC
                     
                     Session["ErrorEliminar"] = "El socio no tiene pagos registrados.";
                     return;
+                    
                 }
                 Pago pago = Listapago[Listapago.Count - 1];
                 if (pago.FechaPago.Month == DateTime.Now.Month && pago.FechaPago.Year == DateTime.Now.Year)
@@ -85,18 +99,41 @@ namespace TPC
                     negocio.eliminarUltimaInscripcion(IdSocio);
                     SocioNegocio socioNegocio = new SocioNegocio();
                     socioNegocio.baja(IdSocio, false);
-                    Response.Redirect("ListadoSocio.aspx", false);
-
                     Usuario usuario = (Usuario)Session["usuario"];
                     LogSocioNegocio logSocioNegocio = new LogSocioNegocio();
                     Socio socio = socioNegocio.filtrarPorID(IdSocio);
                     logSocioNegocio.agregar("Delete", "Socio", IdSocio, socio.Nombre, usuario.User, motivo);
-
+                    Response.Redirect("Gestion.aspx", false);
                 }
                 else
                 {
                     Session["ErrorEliminar"] = "No hay Pagos registrado este mes";
+                    Response.Redirect("Gestion.aspx", false);
                 }
+            }else if(tipoAccion == 4)
+            {
+                Socio socioaux = new Socio();
+                int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+                SocioNegocio negocio = new SocioNegocio();
+                socioaux = negocio.filtrarPorID(IdSocio);
+                negocio.baja(IdSocio, false);
+
+                Usuario usuario = (Usuario)Session["usuario"];
+                LogSocioNegocio logSocioNegocio = new LogSocioNegocio();
+                logSocioNegocio.agregar("Delete", "Socio", IdSocio, socioaux.Nombre, usuario.User, motivo);
+                Response.Redirect("Gestion.aspx", false);
+            }else if(tipoAccion == 5)
+            {
+
+                Socio socioaux = new Socio();
+                int IdSocio = int.Parse(Session["IdSocioSeleccionado"].ToString());
+                SocioNegocio negocio = new SocioNegocio();
+                socioaux = negocio.filtrarPorID(IdSocio);
+                negocio.baja(IdSocio, true);
+                Usuario usuario = (Usuario)Session["usuario"];
+                LogSocioNegocio logSocioNegocio = new LogSocioNegocio();
+                //logSocioNegocio.agregar("Reactivar", "Socio", IdSocio, socioaux.Nombre, usuario.User, motivo);
+                Response.Redirect("Gestion.aspx", false);
             }
             
         }
