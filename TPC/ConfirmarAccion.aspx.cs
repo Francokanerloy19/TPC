@@ -132,7 +132,7 @@ namespace TPC
                 negocio.baja(IdSocio, true);
                 Usuario usuario = (Usuario)Session["usuario"];
                 LogSocioNegocio logSocioNegocio = new LogSocioNegocio();
-                //logSocioNegocio.agregar("Reactivar", "Socio", IdSocio, socioaux.Nombre, usuario.User, motivo);
+                logSocioNegocio.agregar("Reactivar", "Socio", IdSocio, socioaux.Nombre, usuario.User, motivo);
                 Response.Redirect("Gestion.aspx", false);
             }
             

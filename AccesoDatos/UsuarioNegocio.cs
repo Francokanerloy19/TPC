@@ -46,17 +46,17 @@ namespace AccesoDatos
 
         public int AgregarUsuario(string user, string pass, int rol)
         {
-            AccesoDatos datos = new AccesoDatos();
+            AccesoDatos accesoDatos = new AccesoDatos();
 
             try
             {
-                datos.setearConsulta("INSERT INTO Usuario (Usuario, Pass, TipoUser) " +"VALUES (@Usuario, @Pass, @TipoUser); " + "SELECT SCOPE_IDENTITY();");
+                accesoDatos.setearConsulta("INSERT INTO Usuario (Usuario, Pass, TipoUser) " +"VALUES (@Usuario, @Pass, @TipoUser); " + "SELECT SCOPE_IDENTITY();");
 
-                datos.setearParametros("@Usuario", user);
-                datos.setearParametros("@Pass", pass);
-                datos.setearParametros("@TipoUser", rol);
+                accesoDatos.setearParametros("@Usuario", user);
+                accesoDatos.setearParametros("@Pass", pass);
+                accesoDatos.setearParametros("@TipoUser", rol);
 
-                object resultado = datos.ejecutarEscalar();
+                object resultado = accesoDatos.ejecutarEscalar();
                 int idGenerado = Convert.ToInt32(resultado);
 
                 return idGenerado;
@@ -67,10 +67,35 @@ namespace AccesoDatos
             }
             finally
             {
-                datos.cerrarConexion();
+                accesoDatos.cerrarConexion();
             }
         }
+        public bool ExisteUsuario(string user)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
 
+            try
+            {
+                accesoDatos.setearConsulta("SELECT * FROM Usuario WHERE Usuario = @user");
+                accesoDatos.setearParametros("@user", user);
+                accesoDatos.ejecutarConsulta();
+
+                while (accesoDatos.Lector.Read())
+                {
+                    
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
 
     }
 }

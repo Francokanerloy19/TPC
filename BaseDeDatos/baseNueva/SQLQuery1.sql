@@ -129,6 +129,9 @@ WHERE Id = 7;
 --);
 --GO
 select * from LogSocio
+UPDATE LogSocio
+SET Accion = 'Edit'
+WHERE IdLog = 4;
 SELECT IdLog, Accion, Tabla, IdRegistro, NombreRegistro, Usuario, Descripcion, Fecha FROM LogActividades
 SELECT IdLog, Accion, Tabla, IdRegistro, NombreRegistro, Usuario, Descripcion, Fecha FROM LogSocio 
 DELETE FROM ActividadExtra WHERE IdActividad = 5
