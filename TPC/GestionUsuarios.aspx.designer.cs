@@ -11,71 +11,62 @@ namespace TPC
 {
 
 
-    public partial class Admin
+    public partial class GestionUsuarios
     {
 
         /// <summary>
-        /// Control btnCrearUsuario.
+        /// Control txtUser.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCrearUsuario;
+        protected global::System.Web.UI.WebControls.TextBox txtUser;
 
         /// <summary>
-        /// Control btnGestionUuser.
+        /// Control txtPass.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGestionUuser;
+        protected global::System.Web.UI.WebControls.TextBox txtPass;
 
         /// <summary>
-        /// Control btnHistorialPlanes.
+        /// Control btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHistorialPlanes;
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
-        /// Control btnHistorialSocios.
+        /// Control btnModificat.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHistorialSocios;
+        protected global::System.Web.UI.WebControls.Button btnModificat;
 
         /// <summary>
-        /// Control btnEliminarPlan.
+        /// Control btneliminar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEliminarPlan;
+        protected global::System.Web.UI.WebControls.Button btneliminar;
 
         /// <summary>
-        /// Control btnAgregarPlan.
+        /// Control btnVolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregarPlan;
-
-        /// <summary>
-        /// Control btnVolverMenu.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVolverMenu;
+        protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
         /// Control lblMensaje.

@@ -123,6 +123,7 @@
     <Content Include="EliminarPlanes.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Gestion.aspx" />
+    <Content Include="GestionUsuarios.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Historial.aspx" />
     <Content Include="HistorialPago.aspx" />
@@ -263,6 +264,13 @@
     </Compile>
     <Compile Include="Gestion.aspx.designer.cs">
       <DependentUpon>Gestion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionUsuarios.aspx.cs">
+      <DependentUpon>GestionUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionUsuarios.aspx.designer.cs">
+      <DependentUpon>GestionUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

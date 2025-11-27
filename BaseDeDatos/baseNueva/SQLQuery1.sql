@@ -128,7 +128,9 @@ WHERE Id = 7;
 --    Fecha DATETIME NOT NULL DEFAULT GETDATE()
 --);
 --GO
-select * from LogSocio
+SELECT * FROM Usuario WHERE Usuario = 'franco'
+
+select * from Usuario
 UPDATE LogSocio
 SET Accion = 'Edit'
 WHERE IdLog = 4;

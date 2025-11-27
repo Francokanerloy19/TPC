@@ -71,6 +71,7 @@ namespace TPC
 
 
                 int ultimoID = negocio.AgregarUsuario(txtUser.Text, txtPass.Text, 2);
+                
                 Usuario usuario = (Usuario)Session["usuario"];
                 LogActividadesNegocio logActividadesNegocio = new LogActividadesNegocio();
                 logActividadesNegocio.agregar("Insert", "Usuario", ultimoID, txtUser.Text, usuario.User, "nuevo empleado rol admin");

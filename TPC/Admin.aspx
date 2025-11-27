@@ -16,6 +16,7 @@
                     <br />
                     <div class="d-flex justify-content-center gap-3">
                         <asp:Button ID="btnCrearUsuario" runat="server" Text="Crear usuario" CssClass="btn btn-outline-light btn-lg" OnClick="btnCrearUsuario_Click" />
+                        <asp:Button ID="btnGestionUuser" runat="server" Text="Gestionar usuarios" CssClass="btn btn-outline-danger btn-lg" OnClick="btnGestionUuser_Click"/>
                         <asp:Button ID="btnHistorialPlanes" runat="server" Text="Historial de planes" CssClass="btn btn-outline-primary btn-lg"  OnClick="btnHistorialPlanes_Click"/>
                         <asp:Button ID="btnHistorialSocios" runat="server" Text="Historial de socios" CssClass="btn btn-outline-warning btn-lg"  OnClick="btnHistorialSocios_Click" />    
                         <asp:Button ID="btnEliminarPlan" runat="server" Text="Gestionar plan" CssClass="btn btn-outline-danger btn-lg" OnClick="btnEliminarPlan_Click" />

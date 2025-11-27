@@ -18,6 +18,7 @@ namespace Dominio
         public string Pass { get; set; }
         public TipoUsuario TipoUsuario { get; set; }
         
+        public Usuario() { }
         public Usuario(string user, string pass, bool admin) 
         {
             User = user;

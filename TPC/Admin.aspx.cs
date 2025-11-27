@@ -53,5 +53,11 @@ namespace TPC
             Response.Redirect("Historial.aspx", false);
 
         }
+
+        protected void btnGestionUuser_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("GestionUsuarios.aspx", false);
+            
+        }
     }
 }

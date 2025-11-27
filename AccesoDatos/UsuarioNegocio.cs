@@ -96,6 +96,86 @@ namespace AccesoDatos
                 accesoDatos.cerrarConexion();
             }
         }
+        public bool EliminarUsuario(string user)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+
+                accesoDatos = new AccesoDatos();
+                accesoDatos.setearConsulta("DELETE FROM Usuario WHERE Usuario = @user");
+                accesoDatos.setearParametros("@user", user);
+                accesoDatos.ejecutarAccion();
+
+                return true; // Eliminado correctamente
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
+
+        public Usuario BuscarUsuario(string user)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                datos.setearConsulta("SELECT Id, Usuario, Pass, TipoUser FROM Usuario WHERE Usuario = @Usuario");
+                datos.setearParametros("@Usuario", user);
+                datos.ejecutarConsulta();
+
+                if (datos.Lector.Read())
+                {
+                    Usuario usuario = new Usuario();
+                    usuario.Id = (int)datos.Lector["Id"];
+                    usuario.User = datos.Lector["Usuario"].ToString();
+                    usuario.Pass = datos.Lector["Pass"].ToString();
+                    usuario.TipoUsuario = (int)datos.Lector["TipoUser"] == 2 ? TipoUsuario.ADMIN : TipoUsuario.NORMAL;
+
+                    return usuario;   
+                }
+
+                return null;  
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void ModificarUsuario(Usuario usuario)
+        {
+            AccesoDatos accesoDatos = new AccesoDatos();
+
+            try
+            {
+                accesoDatos.setearConsulta("UPDATE Usuario SET Pass = @pass, TipoUser = @tipo WHERE Usuario = @user");
+
+                accesoDatos.setearParametros("@pass", usuario.Pass);
+                accesoDatos.setearParametros("@tipo", (int)usuario.TipoUsuario);
+                accesoDatos.setearParametros("@user", usuario.User);
+
+                accesoDatos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                accesoDatos.cerrarConexion();
+            }
+        }
 
     }
 }
